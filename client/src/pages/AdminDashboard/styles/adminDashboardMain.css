@@ -1,0 +1,18 @@
+.admin-dashboard-main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.admin-sidebar{
+    width: 15%;
+    height: 100%;
+}
+.admin-main-wrapper{
+    width: 85%;
+    height: 100%;
+}
