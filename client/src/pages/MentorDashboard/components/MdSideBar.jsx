@@ -1,5 +1,5 @@
 import React from "react";
-
+import dashboard from "../assets/dashboard.png"
 function MdSideBar() {
   return (
     <div className="md-sidebar-wrapper">
@@ -7,7 +7,7 @@ function MdSideBar() {
       <div className="md-sidebar-general">
         <div className="md-sidebar-generalHead">General</div>
         <div className="md-sidebar-generalSub">
-          <div className="md-sidebar-generalSub-icon1-div"><img src="./images/dashboard.png" className="md-sidebar-generalSub-icon1"/></div>
+          <div className="md-sidebar-generalSub-icon1-div"><img src={dashboard} className="md-sidebar-generalSub-icon1"/></div>
           <a className="md-sidebar-generalSub-Name " href="">Dashboard</a>
         </div>
         <div className="md-sidebar-generalSub">

@@ -60,12 +60,17 @@ body {
 .WelcomeBack {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 2.6vw;
+    margin-bottom: 0.5vw;
+    margin-top: 0%;
 }
 .WelcomeBack1 {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   margin-bottom: 6vh;
   letter-spacing: -0.4px;
+  margin-top: 0%;
 }
 
 /*Inputs*/
@@ -77,13 +82,13 @@ body {
   gap: 0.5em;
   background-color: #f2f7ff;
   border-radius: 4px;
-  padding: 0.7em 1.6em;
-  width: 72%;
+  padding: 0.65em 1.6em;
+  width: 60%;
   border: 1.5px solid #003132;
 }
 
 .Login-input-icon {
-  height: 1em;
+  height: 1.7em;
   width: 1em;
   fill: #008b8d;
 }
@@ -113,11 +118,12 @@ body {
   font-weight: bold;
   font-size: 0.8em;
   text-transform: uppercase;
-  padding: 0.8em 1.9em;
+  padding: 1em 1.9em;
   background-color: #ffeba7;
   color: #5e6681;
   box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
   transition: all 0.3s ease-in-out;
+  /* padding-top: 1em; */
 
 }
 
@@ -172,7 +178,7 @@ body {
     margin: 0% 1vw;
     display: inline-block;
 }
-.buttonGoogle {
+.LoginbuttonGoogle {
     max-width: 320px;
     display: flex;
     padding: 0.5rem 1.4rem;
@@ -192,13 +198,15 @@ body {
     transition: all .6s ease;
     margin-top: 2.2vh;
     /* margin-left: -500vw; */
+    /* margin-right: 8vw; */
+    margin-left: 1.5vw;
   }
   
-  .buttonGoogle svg {
+  .LoginbuttonGoogle svg {
     height: 24px;
   }
   
-  .buttonGoogle:hover {
+  .LoginbuttonGoogle:hover {
     transform: scale(1.02);
   }
   
