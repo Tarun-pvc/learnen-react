@@ -1,7 +1,7 @@
 import React from 'react';
 import './fdfedLogin.css';
 import { useRef } from 'react';
-import LoginImage from "./assets/Mobile-login-Cristina-removebg.png";
+import LoginImage from "./assets/Mobile-login-Cristina-removebg.png"
 function LoginPage() {
   return (
     <div className="body1 center">

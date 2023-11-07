@@ -9,11 +9,11 @@ import MentorDashboard from './pages/MentorDashboard/components/MentorDashboard'
 function App() {
   return (
     <div className="App">
-      {/* <AdminDashboardMain/> */}
-      {/* <LoginPage></LoginPage> */}
-      {/* <SignUp></SignUp> */}
-      {/* <VerificationPage></VerificationPage> */}
       <MentorDashboard></MentorDashboard>
+      <AdminDashboardMain/>
+      <LoginPage></LoginPage>
+      <SignUp></SignUp>
+      <VerificationPage></VerificationPage>
     </div>
   );
 }
