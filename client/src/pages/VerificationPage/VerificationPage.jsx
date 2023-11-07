@@ -1,5 +1,6 @@
 import "./VerificationPage.css";
 import React from "react";
+import OtpImage from "./assets/6325251-removebg-preview.png";
 
 function VerificationPage() {
   return (
@@ -7,7 +8,7 @@ function VerificationPage() {
       <div className="otp-body">
         <div className="otp-innerBox">
         <div className="otp-img-div">
-          <img src="./images/6325251-removebg-preview.png" alt="otp-img" className="otp-img" />
+          <img src={OtpImage} alt="otp-img" className="otp-img" />
         </div>
         <div className="right-div">
             <div class="otp-box">

@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import "./SignUp.css";
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SignUpImage from "./assets/3236196-removebg-preview.png";
 
 function SignUp() {
   const [username,setUsername]=useState("");
@@ -34,7 +35,7 @@ function SignUp() {
       <div className="su-body">
         <div className="su-innerBox">
           <div className="su-img-div">
-            <img src="./images/3236196-removebg-preview.png" alt="su-img" className="su-img" />
+            <img src={SignUpImage} alt="su-img" className="su-img" />
           </div>
           <div className="right-div">
             <div className="right-div-inner">

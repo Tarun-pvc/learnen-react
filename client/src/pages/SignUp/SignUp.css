@@ -43,8 +43,8 @@
     gap: 0.5em;
     background-color: #f2f7ff;
     border-radius: 4px;
-    padding: 0.7em 1.6em;
-    width: 72%;
+    padding: 0.9em 1.6em;
+    width: 60%;
     border: 1.5px solid #003132;
   }
   
@@ -79,12 +79,15 @@
     font-weight: bold;
     font-size: 0.8em;
     text-transform: uppercase;
-    padding: 0.8em 2.5em;
+    padding: 1em 2.5em;
     background-color: #ffeba7;
     color: #5e6681;
     box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
     transition: all 0.3s ease-in-out;
-  
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    letter-spacing: 0.07vw;
+    font-weight: 800;
   }
   
   .SignUp-btn-link {
