@@ -1,63 +1,63 @@
-import {useState} from 'react'
+import { useState } from "react";
 import "../styles/adminCoursesNav.css";
 import AdminCourseCard from "./adminCourseCard";
-import CardImg from '../assets/Software code testing.png'
+import CardImg from "../assets/Software code testing.png";
 
 export default function AdminCoursesNav() {
   const courseData = [
     {
-      cardimg : CardImg,
-      title : "Full-Stack-Development",
-      mentor : "Dr.Karthick Surthadar",
-      stars : 4,
-      users : 400,
-      reports : 20
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 300,
+      reports: 18,
     },
     {
-      cardimg : CardImg,
-      title : "Full-Stack-Development",
-      mentor : "Dr.Karthick Surthadar",
-      stars : 4,
-      users : 400,
-      reports : 20
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 400,
+      reports: 16,
     },
     {
-      cardimg : CardImg,
-      title : "Full-Stack-Development",
-      mentor : "Dr.Karthick Surthadar",
-      stars : 4,
-      users : 400,
-      reports : 20
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 500,
+      reports: 12,
     },
     {
-      cardimg : CardImg,
-      title : "Full-Stack-Development",
-      mentor : "Dr.Karthick Surthadar",
-      stars : 4,
-      users : 400,
-      reports : 20
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 600,
+      reports: 20,
     },
     {
-      cardimg : CardImg,
-      title : "Full-Stack-Development",
-      mentor : "Dr.Karthick Surthadar",
-      stars : 4,
-      users : 400,
-      reports : 20
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 700,
+      reports: 23,
     },
     {
-      cardimg : CardImg,
-      title : "Full-Stack-Development",
-      mentor : "Dr.Karthick Surthadar",
-      stars : 4,
-      users : 400,
-      reports : 20
-    }
-  ]
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 800,
+      reports: 10,
+    },
+  ];
 
-  const itemsPerPage = 12;
-  const totalPages = Math.ceil(courseData.length / itemsPerPage);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const itemsPerPage = 12;
+  // const totalPages = Math.ceil(courseData.length / itemsPerPage);
+  // const [currentPage, setCurrentPage] = useState(1);
 
   // const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   //   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -77,10 +77,19 @@ export default function AdminCoursesNav() {
   //   );
   // };
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  // const handlePageChange = (pageNumber) => {
+  //   setCurrentPage(pageNumber);
+  // };
 
+  const [sortType, setSortType] = useState("default");
+
+  const sortedList = [...courseData].sort((a, b) => {
+    if (sortType === "reports") return a.reports - b.reports;
+    if (sortType === "users") return a.users - b.users;
+    return 0;
+  });
+
+  console.log(sortedList);
   return (
     <div className="admin-courses-nav-wrapper">
       <div className="courses-nav-navbar">
@@ -100,14 +109,14 @@ export default function AdminCoursesNav() {
         <div className="admin-courses-sort-wrapper">
           <h2>Sort By:</h2>
           <div className="admin-courses-sort-list">
-            <h2>Reports</h2>
-            <h2>Relevance</h2>
-            <h2>User Count</h2>
+            <h2 onClick={() => setSortType("reports")}>Reports</h2>
+            <h2 onClick={() => setSortType("default")}>Relevance</h2>
+            <h2 onClick={() => setSortType("users")}>User Count</h2>
           </div>
         </div>
         <div className="admin-courses-cards-wrapper">
-          {courseData.map((card)=>(
-            <AdminCourseCard key={card.index} cardData={card}/>
+          {sortedList.map((card) => (
+            <AdminCourseCard key={card.index} cardData={card} />
           ))}
         </div>
       </div>
