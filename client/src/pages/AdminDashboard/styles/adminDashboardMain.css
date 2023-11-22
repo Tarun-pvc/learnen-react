@@ -6,6 +6,7 @@
     justify-content: center;
     flex-direction: row;
     gap: 2rem;
+    overflow: hidden;
 }
 
 .admin-sidebar{
@@ -15,4 +16,5 @@
 .admin-main-wrapper{
     width: 85%;
     height: 100%;
+    overflow-y: scroll;
 }
