@@ -31,6 +31,11 @@ app.use(session({
 
 app.use('/api',Routes);
 
+// app.get('http://localhost:3000/api/adminRooms',(req,res)=>{
+//   console.log("Inside")
+
+// })
+
 app.listen(3000, () => {
     console.log('server running at port 3000');
 })

@@ -1,9 +1,12 @@
-import mongoose, { mongo } from "mongoose";
+const mongoose = require('mongoose')
 
 const RoomModel = new mongoose.Schema({
     title: {
         type: String,
         required: true
+    },
+    img:{
+        type:String
     },
     description: {
         type: String,
@@ -12,14 +15,22 @@ const RoomModel = new mongoose.Schema({
     participants: [{
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     }],
-    mentor: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    mentor: {
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    },
     price:{
         type:String,
         required:true
     },
     meetlink:{
         type:String
-    }
+    },
+    stars:{
+        type:String
+    },
+    reports:[{type:mongoose.Schema.Types.ObjectId, ref:'Report'}]
 })
 
-module.exports = mongoose.model('Room' , RoomModel);
+const Room = mongoose.model('Room' , RoomModel);
+
+module.exports = Room;
