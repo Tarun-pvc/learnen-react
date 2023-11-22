@@ -61,11 +61,12 @@
 
 .md-Middle-wrapper{
     width:63vw;
-    height:100vh;
+    height:96vh;
     /* background-color: #DBE2EF; */
     float: left;
     padding: 2vh;
     padding-left: 4vh;
+    padding-bottom: 0;
 }
 .md-MentorWelcome-wrapper{
     width:57vw;
@@ -98,12 +99,13 @@
 .md-MentorWelcome-wrapper-left-p{
     font-size: 1vw;
     padding-left: 4.5vw;
-    padding-top: 1vh;
+    padding-top: 0vh;
     font-weight: 500;
+    margin-top: 1vh;
 }
 .md-CourseAnalytics-wrapper{
     width:57vw;
-    height:19vh;
+    height:18vh;
     border-radius: 13px;
     background-color: #DBE2EF;
     margin-top: 3vh;
@@ -114,7 +116,7 @@
     align-items: center;
     justify-content: center;
     width:100%;
-    font-size: 1.8vw;
+    font-size: 1.6vw;
     font-weight: 600;
     padding-bottom: 2.5vh;
     padding-top: 1.8vh;
@@ -123,7 +125,7 @@
     height:100%;
     width:50%;
     float:left;
-    font-size: 1.2vw;
+    font-size: 1.1vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,7 +134,7 @@
 .md-CourseAnalyticsHead-wrapper-right{
     height:100%;
     width:50%;
-    font-size: 1.2vw;
+    font-size: 1.1vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,20 +143,22 @@
 
 .md-Middle-Schedule-wrapper{
     width:57vw;
-    height:50vh;
+    height:51vh;
     margin-top: 3vh;
+    
     overflow: scroll;
     overflow-x: hidden;
 }
 
 .md-Middle-ScheduleHead{
+    z-index: 1;
     font-size: 3.5vh;
     font-weight: 600;
     margin-bottom: 2.2vh;
 }
 
 .md-Middle-Schedule-new{
-    width:92%;
+    width:81%;
     height:10vh;
     background-color: #DBE2EF;
     margin-top: 1vh;
@@ -169,22 +173,29 @@
     float:left;
 }
 .md-Middle-Schedule-new-right{
-    padding-top: 1.2vh;
+    padding-top: 1.5vh;
     width:50%;
     float:left;
 }
+.md-Middle-Schedule-new-left-Lecture{
+    font-size: 2vh;
+}
 .md-Middle-Schedule-new-left-Name{
-    font-size: 3vh;
-    font-weight: 500;
-    margin-top: 0.7vh;
+    font-size: 2.9vh;
+    font-weight: 600;
+    margin-top: 1vh;
+    letter-spacing: 0.03vw;
 }
 .md-Middle-Schedule-new-right-time{
-    
+    font-size: 2.2vh;
     float:right;
 }
 .md-Middle-Schedule-new-right-View{
+    /* margin-top: 0.7vh; */
     float:right;
     text-decoration-line: none;
+    color: blue;
+    font-size: 2vh;
 }
 ::-webkit-scrollbar {
     width: 10px;
