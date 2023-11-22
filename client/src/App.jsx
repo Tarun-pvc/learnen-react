@@ -12,6 +12,7 @@ function App() {
   return (
     <Router>
     <div className="App">
+      
       <Routes>
         <Route path='/' element={<Landing/>} />
         <Route path='/login' element={<LoginPage/>}/>
@@ -20,6 +21,7 @@ function App() {
         <Route path='/mentorDashboard' element={<MentorDashboard/>}/>
         <Route path='/adminDashboard' element={<AdminDashboardMain/>}/>
       </Routes>
+
     </div>
     </Router>
   );
