@@ -1,5 +1,8 @@
 import React from "react";
 import dashboard from "../assets/dashboard.png"
+import courses from "../assets/learning.png"
+import create from "../assets/page.png"
+import update from "../assets/update-user.png"
 function MdSideBar() {
   return (
     <div className="md-sidebar-wrapper">
@@ -11,16 +14,16 @@ function MdSideBar() {
           <a className="md-sidebar-generalSub-Name " href="">Dashboard</a>
         </div>
         <div className="md-sidebar-generalSub">
-          <img src="./images/learning.png" className="md-sidebar-generalSub-icon"/>
+          <img src={courses} className="md-sidebar-generalSub-icon"/>
           <a className="md-sidebar-generalSub-Name" href="">Courses</a>
         </div>
         <div className="md-sidebar-generalSub">
-          <img src="./images/page.png" className="md-sidebar-generalSub-icon"/>
+          <img src={create} className="md-sidebar-generalSub-icon"/>
           <a className="md-sidebar-generalSub-Name" href="">Create</a>
         </div>
         <div className="md-sidebar-ProfileSeHead">Profile Settings</div>
         <div className="md-sidebar-generalSub">
-          <img src="./images/update-user.png" className="md-sidebar-generalSub-icon"/>
+          <img src={update} className="md-sidebar-generalSub-icon"/>
           <a className="md-sidebar-generalSub-Name " href="">Update Profile</a>
         </div>
       </div>

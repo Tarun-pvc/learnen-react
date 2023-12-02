@@ -1,5 +1,6 @@
 import React from "react";
 import NewSchedule from "./NewSchedule";
+import Welcome from "../assets/Screenshot_2023-11-06_113903-removebg-preview.png";
 
 function MdMiddle() {
   return (
@@ -17,7 +18,7 @@ function MdMiddle() {
         </div>
         <div className="md-MentorWelcome-wrapper-img">
           <img
-            src="./images/Screenshot_2023-11-06_113903-removebg-preview.png"
+            src={Welcome}
             className="md-sidebar-MentorWelcome-icon1"
           />
         </div>
