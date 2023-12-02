@@ -15,7 +15,7 @@ function NewSchedule() {
         <div>
             <div  className="md-Middle-Schedule-new-right-time">25.08.2023 03:00-4:00 PM</div>
             <br></br>
-            <a   className="md-Middle-Schedule-new-right-View">View</a>
+            <a className="md-Middle-Schedule-new-right-View">View</a>
           </div>
       </div>
     </>
