@@ -24,6 +24,7 @@ function MdMiddle() {
         </div>
       </div>
       <div className="md-CourseAnalytics-wrapper">
+        <div>
         <div className="md-CourseAnalyticsHead-wrapper">Course Analytics</div>
         <div>
           <div className="md-CourseAnalyticsHead-wrapper-left">
@@ -32,6 +33,7 @@ function MdMiddle() {
           <div className="md-CourseAnalyticsHead-wrapper-right">
             Number of Students : <b> 3740</b>
           </div>
+        </div>
         </div>
       </div>
       <div className="md-Middle-Schedule-wrapper">
