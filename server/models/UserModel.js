@@ -21,8 +21,7 @@ const UserModel = new  mongoose.Schema({
         match:[
             /^[1-9][0-9]{9}$/,
             "Please add a valid Phone number"
-        ],
-        default:"6305536136"
+        ]
     },
     password:{
         type:String,
@@ -34,13 +33,11 @@ const UserModel = new  mongoose.Schema({
     },
     Security_Question: {
         type:String,
-        required:true,
-        default:"Whats your name?"
+        required:true
     },
     Security_Answer: {
         type:String,
         required:true,
-        default:"Name"
     },
     Joined_Room: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Room' }],
     Created_Room: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Room' }],
