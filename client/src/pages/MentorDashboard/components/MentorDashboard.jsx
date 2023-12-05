@@ -9,12 +9,13 @@ import courses from "../assets/learning.png"
 import create from "../assets/page.png"
 import update from "../assets/update-user.png"
 import MentorCourses from "./MentorCourses";
+import CreateRoom from "./CreateRoom";
 // import { useRef } from 'react';
 
 function MentorDashboard() {
 
-  const [dashboard1,setDashboard] = useState(false);
-  const [courses1,setCourses] = useState(true);
+  const [dashboard1,setDashboard] = useState(true);
+  const [courses1,setCourses] = useState(false);
   const [create1,setCreate] = useState(false);
   const [update1,setUpdate] = useState(false);
 
@@ -64,7 +65,7 @@ function MentorDashboard() {
         </div>
         <div className="md-sidebar-generalSub">
           <img src={create} className="md-sidebar-generalSub-icon"/>
-          <button className="md-sidebar-generalSub-Name" onClick={dashboardHandler}>Create</button>
+          <button className="md-sidebar-generalSub-Name" onClick={createHandler}>Create</button>
         </div>
         <div className="md-sidebar-ProfileSeHead">Profile Settings</div>
         <div className="md-sidebar-generalSub">
@@ -76,7 +77,7 @@ function MentorDashboard() {
       {dashboard1 && <><MdMiddle></MdMiddle><MDRightBar></MDRightBar></>}
       {update1 && <UpdateMP></UpdateMP> }
       {courses1 && <><MentorCourses></MentorCourses><MDRightBar></MDRightBar></>}
-      
+      {create1 && <CreateRoom></CreateRoom>}
     </>
   );
 }
