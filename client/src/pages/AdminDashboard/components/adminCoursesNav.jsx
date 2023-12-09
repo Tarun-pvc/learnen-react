@@ -5,56 +5,57 @@ import axios from 'axios'
 
 export default function AdminCoursesNav() {
   const [roomData, setRoomData] = useState([]);
-  // const courseData = [
-  //   {
-  //     cardimg: CardImg,
-  //     title: "Full-Stack-Development",
-  //     mentor: "Dr.Karthick Surthadar",
-  //     stars: 4,
-  //     users: 300,
-  //     reports: 18,
-  //   },
-  //   {
-  //     cardimg: CardImg,
-  //     title: "Full-Stack-Development",
-  //     mentor: "Dr.Karthick Surthadar",
-  //     stars: 4,
-  //     users: 400,
-  //     reports: 16,
-  //   },
-  //   {
-  //     cardimg: CardImg,
-  //     title: "Full-Stack-Development",
-  //     mentor: "Dr.Karthick Surthadar",
-  //     stars: 4,
-  //     users: 500,
-  //     reports: 12,
-  //   },
-  //   {
-  //     cardimg: CardImg,
-  //     title: "Full-Stack-Development",
-  //     mentor: "Dr.Karthick Surthadar",
-  //     stars: 4,
-  //     users: 600,
-  //     reports: 20,
-  //   },
-  //   {
-  //     cardimg: CardImg,
-  //     title: "Full-Stack-Development",
-  //     mentor: "Dr.Karthick Surthadar",
-  //     stars: 4,
-  //     users: 700,
-  //     reports: 23,
-  //   },
-  //   {
-  //     cardimg: CardImg,
-  //     title: "Full-Stack-Development",
-  //     mentor: "Dr.Karthick Surthadar",
-  //     stars: 4,
-  //     users: 800,
-  //     reports: 10,
-  //   },
-  // ];
+  const CardImg = "images/Software code testing.png" 
+  const courseData = [
+    {
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 300,
+      reports: 18,
+    },
+    {
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 400,
+      reports: 16,
+    },
+    {
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 500,
+      reports: 12,
+    },
+    {
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 600,
+      reports: 20,
+    },
+    {
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 700,
+      reports: 23,
+    },
+    {
+      cardimg: CardImg,
+      title: "Full-Stack-Development",
+      mentor: "Dr.Karthick Surthadar",
+      stars: 4,
+      users: 800,
+      reports: 10,
+    },
+  ];
 
   // const itemsPerPage = 12;
   // const totalPages = Math.ceil(courseData.length / itemsPerPage);
@@ -82,25 +83,28 @@ export default function AdminCoursesNav() {
   //   setCurrentPage(pageNumber);
   // };
 
-  useEffect(() => {
-    axios.get("http://localhost:3000/api/adminRooms")
-      .then((response) => {
-        setRoomData(response.data.Rooms);
-      })
-      .catch((error) => {
-        console.error("Error fetching room details:", error);
-      });
-  }, []); 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:3000/api/adminRooms");
+  //       console.log(response.data.Rooms)
+  //       setRoomData(response.data.Rooms)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []); 
 
   const [sortType, setSortType] = useState("default");
 
-  const sortedList = [...roomData].sort((a, b) => {
+  const sortedList = [...courseData].sort((a, b) => {
     if (sortType === "reports") return a.reports - b.reports;
     if (sortType === "users") return a.users - b.users;
     return 0;
   });
 
-  console.log(sortedList)
   return (
     <div className="admin-courses-nav-wrapper">
       <div className="courses-nav-navbar">
@@ -120,8 +124,8 @@ export default function AdminCoursesNav() {
         <div className="admin-courses-sort-wrapper">
           <h2>Sort By:</h2>
           <div className="admin-courses-sort-list">
-            <h2 onClick={() => setSortType("reports")}>Reports</h2>
             <h2 onClick={() => setSortType("default")}>Relevance</h2>
+            <h2 onClick={() => setSortType("reports")}>Reports</h2>
             <h2 onClick={() => setSortType("users")}>User Count</h2>
           </div>
         </div>

@@ -1,0 +1,48 @@
+/* MentorApplicationForm.css */
+.mentor-application-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #dbe2ef;
+    padding-right: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #form-tag {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  #input-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .inputs{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  #form-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #form-button:hover {
+    background-color: #ffee00;
+    transition: 100ms;
+    
+  }

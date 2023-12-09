@@ -5,11 +5,15 @@ const session = require('express-session');
 const cors = require('cors');
 const app = express();
 const compression = require("compression")
+const bodyParser = require('body-parser');
 
 app.use(cors());
 app.use(compression());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 require('dotenv').config();
 

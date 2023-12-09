@@ -1,0 +1,272 @@
+.LandingPage-wrapper {
+  padding-top: 3vh;
+  width: 99vw;
+  overflow-x: hidden;
+  /* background-color: #dbe2ef; */
+}
+
+.LandingPage-nav-head {
+  font-size: 4vh;
+  font-weight: 700;
+  letter-spacing: 0.03vw;
+  float: left;
+  margin: 0%;
+}
+
+.LandingPage-nav-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.LandingPage-nav {
+  width: 80vw;
+}
+
+.LandingPage-nav-Login {
+  float: right;
+}
+
+.LandingPage-nav-Login {
+  width: 8vw;
+  height: 6vh;
+  border: 3px solid #112d4e;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: white;
+  font-size: 1.2em;
+  font-weight: 550;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 0.5vh;
+  background: #dbe2ef;
+}
+
+.LandingPage-nav-Login:hover {
+  background: #112d4e;
+  color: #dbe2ef;
+  font-size: 1.4em;
+}
+
+.LandingPage-nav-hat {
+  margin-top: 0.3vh;
+  margin-right: 0.7vh;
+  height: 5.5vh;
+  float: left;
+}
+
+.LandingPage-body-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.LandingPage-planet{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 50px;
+  height: 50px;
+}
+
+.LandingPage-section1 {
+  height: 90vh;
+  width: 80vw;
+  /* background-color: #dbe2ef; */
+}
+
+.LandingPage-section1-left {
+  width: 50%;
+  height: 92%;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LandingPage-section1-right {
+  width: 50%;
+  height: 100%;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LandingPage-nav-landing {
+  height: 75vh;
+}
+
+.LandingPage-section1-left-full {
+  width: 40vw;
+}
+
+.Learnfromtoday {
+  color: #f87f76;
+  font-weight: 600;
+  letter-spacing: 0.08vw;
+  margin: 0%;
+  margin-bottom: 1vh;
+  font-size: 01vw;
+}
+
+.TheBestWayFor {
+  font-size: 4vw;
+  font-weight: 600;
+  letter-spacing: 0.03vw;
+  margin: 0%;
+}
+
+.YourLearning {
+  font-size: 4vw;
+  font-weight: 600;
+  letter-spacing: 0.03vw;
+  margin: 0%;
+}
+
+.LandingPage-section1-left-description {
+  margin-top: 5vh;
+  border-left: 3px solid #f87f76;
+}
+
+.LandingPage-section1-left-description1 {
+  color: #969696;
+  font-size: 0.9vw;
+  font-weight: 600;
+  margin: 0%;
+  letter-spacing: 0.03vw;
+  margin-left: 2vw;
+}
+
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: #b1dae7;
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.cta span {
+  position: relative;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #234567;
+}
+
+.LandingPage-signup {
+  margin-top: 5vh;
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #234567;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: #b1dae7;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active {
+  transform: scale(0.95);
+}
+
+.LandingPage-section1-pens {
+  height: 10vh;
+}
+
+.lp-section2-square{
+  position: absolute;
+  height: 18rem;
+  width: 60rem;
+  background-color: #b1dae6;
+  z-index: 0;
+  left: -4.5%;
+  top: 25%;
+  border-radius: 20px;
+}
+
+.LandingPage-section2{
+  position: relative;
+  margin-bottom: 20vh;
+}
+
+.lp-section2-cards-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lp-section2-card{
+  border-radius: 20px;
+  box-shadow: 0 0 4px #787878;
+  padding: 1rem;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.lp-section2-card-image{
+  width: 100%;
+}
+
+.lp-section2-card-image>img{
+  max-width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.lp-section2-card-content-title{
+  font-weight: 600;
+}
+
+.lp-section2-card-content-icons-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lp-section2-card-icons1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+

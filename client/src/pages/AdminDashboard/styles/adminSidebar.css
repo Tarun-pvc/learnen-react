@@ -5,6 +5,7 @@
     flex-direction: column;
     box-shadow: 0 0 4px #787878;
     padding: 1rem;
+    background-color: #2962ff;
 }
 
 .admin-sidebar-header{
@@ -41,4 +42,9 @@
 
 .admin-sidebar-fontawesome-icon{
     font-size: 19px;
+}
+
+#active{
+    color: pink;
+    font-weight:bolder;
 }

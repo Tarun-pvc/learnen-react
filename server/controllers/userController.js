@@ -1,7 +1,7 @@
 const User = require('../models/UserModel')
 const bcrypt = require('bcrypt')
 
-const registerUser = async(req,res)=>{
+const registerUser = async (req, res) => {
     const name = req.body.signupname;
     const email = req.body.signupemail;
     const password = req.body.signuppass;
@@ -11,29 +11,29 @@ const registerUser = async(req,res)=>{
     console.log(name);
     console.log(email);
     console.log(password);
-    try{
+    try {
         const newUser = new User({
-            userName : name,
-            email : email,
-            password : password,
-            phoneNumber : phonenumber,
-            Security_Answer : securityanswer,
-            Security_Question : securityquestion,
-            Joined_Room : [],
-            Created_Room : [],
-            Position : "student",
-            Tags : []
+            userName: name,
+            email: email,
+            password: password,
+            phoneNumber: phonenumber,
+            Security_Answer: securityanswer,
+            Security_Question: securityquestion,
+            Joined_Room: [],
+            Created_Room: [],
+            Position: "student",
+            Tags: []
         });
         console.log(newUser);
         await newUser.save();
         req.session.user = newUser;
         res.status(200).json({ success: true });
     }
-    catch(err){
+    catch (err) {
         console.error(err);
         res.status(500).json({ error: "Registration failed" });
     }
-    
+
 }
 
 const loginUser = async (req, res, next) => {
@@ -52,12 +52,13 @@ const loginUser = async (req, res, next) => {
         }
 
         const passwordIsCorrect = await bcrypt.compare(password, user.password);
-        
-    console.log(email);
-    console.log(user.password);
+
+        console.log(email);
+        console.log(user.password);
 
         if (user && passwordIsCorrect) {
             let newUser = await User.findOne({ email }).select('-password');
+            req.session.user = newUser;
             return res.status(201).json(newUser);
         } else {
             return res.status(400).json({ message: 'Please provide a correct email and password' });
@@ -67,8 +68,18 @@ const loginUser = async (req, res, next) => {
     }
 };
 
-module.exports={
+const logoutUser = async (req, res, next) => {
+    req.session.destroy((err) => {
+        console.log(err)
+        res.json({
+            message: "Logged out successfully"
+        })
+    })
+}
+
+module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    logoutUser
 }
 
