@@ -2,16 +2,18 @@
     width: 100%;
     height: 50vh;
     overflow-y: scroll;
+    background-color: #DBE2EF;
     margin: 0 auto;
     margin-top: 3rem;
-    box-shadow: 0 0 4px #787878;
-    border-radius: 20px 0 0 20px;
+    /* box-shadow: 0 0 4px #787878; */
+    border-radius: 10px;
+    /* border: 1px solid; */
     padding: 1rem;
 }
 
 .cr-assignments-main>h1{
     margin: 0;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .cr-assignments-item{
@@ -34,7 +36,7 @@
     border-bottom-right-radius: 10px;
 }
 .cr-assignment-assigned-item-content{
-    background-color: #DCE2EF;
+    background-color: white;
     width: calc(100%-1%);
     margin-left: 1%;
     border-top-right-radius: 10px;
@@ -48,7 +50,7 @@
 
 .cr-assignments-new-left {
     width: 58vw;
-    overflow: scroll;
+    /* overflow: scroll; */
     overflow-x: hidden;
 }
 
@@ -82,15 +84,21 @@
 }
 
 .cr-assignments-new-left-name {
-    font-size: 3vh;
+    font-size: 2.8vh;
     font-weight: 500;
+}
+.cr-assignments-new-left-lecture{
+    font-size: 2.1vh;
 }
 
 .cr-assignments-new-right-time {
+    font-size: 2.3vh;
     float: right;
 }
 
 .cr-assignments-new-right-view {
     float: right;
     text-decoration-line: none;
+    font-size: 2.1vh;
+    color: blue;
 }

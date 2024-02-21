@@ -13,8 +13,9 @@ const reducer = createSlice({
     addToList:(state,action) => {
         state.wishList.push(action.payload);
     },
-    removeFromList:(state,action) => {
-        state.wishList = state.wishList.filter((item) => item !== action.payload); 
+    removeFromList: (state, action) => {
+      console.log(action.payload);
+      state.wishList = state.wishList.filter(item => item.name !== action.payload);
     },
     addUser:(state,action) => {
         state.user = (action.payload);

@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     background-color: #112D4E;
-    box-shadow: 0 0 4px #787878;
+    /* box-shadow: 0 0 4px #787878; */
     height: 100%;
     width: 16.5vw;
 }
@@ -82,19 +82,20 @@
 }
 
 .cr-main-top-left {
-    width: 58vw;
+    width: 60vw;
     height: 100%;
     border-radius: 13px;
     background-color: #dbe2ef;
-    margin-left: 4vw;
+    margin-left: 2vw;
     margin-bottom: 3vh;
     display: flex;
     align-items: center;
-    box-shadow: 0 0 4px #787878;
+    /* box-shadow: 0 0 4px #787878; */
 }
 
 .cr-main-top-img {
     height: 25vh;
+    margin-left: 5vw;
 }
 
 .cr-main-top-image {
@@ -147,7 +148,8 @@
 }
 
 .cr-main-top-content-course {
-    font-size: 3vh;
+    margin-top: 0;
+    font-size: 4vh;
     font-weight: 600;
     margin-bottom: 1vh;
 }
@@ -174,11 +176,11 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    box-shadow: 0 0 4px #787878;
+    /* box-shadow: 0 0 4px #787878; */
 }
 
 .cr-main-bottom {
-    width: 90%;
+    width: 95%;
     display: flex;
     flex-direction: row;
     margin: 0 auto;
@@ -192,16 +194,16 @@
 .cr-mail-component {
     width: 31%;
     background-color: #dbe2ef;
-    height: 26.5rem;
+    height: 52vh;
     margin-top: 3rem;
-    margin-left: 1rem;
-    border-radius: 0 20px 20px 0;
+    margin-left: 3rem;
+    border-radius:  20px;
     padding: 0.5rem 1rem;
 }
 
 .cr-mail-component>p {
     font-size: 23px;
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 0;
 }
 
@@ -221,7 +223,7 @@
 }
 
 .cr-mail-subject-input>label,.cr-mail-subject-input-text-area>label {
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #333;
 }
 
@@ -229,9 +231,9 @@
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: 1px solid ;
     border-radius: 5px;
-    font-size: 1em;
+    /* font-size: 1em; */
 }
 
 .cr-mail-subject-input-text-area {
@@ -242,18 +244,19 @@
 }
 
 .cr-mail-subject-input-text-area>textarea {
+    margin-top: 1.5vh;
     padding: 12px;
-    font-size: 14px;
+    /* font-size: 14px; */
     width: 100%;
     height: 8rem;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: 1px solid;
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
 }
 
 .cr-mail-component>form>button{
-    margin-top: 5rem;
+    margin-top: 1.1rem;
     background-color: #008CBA;
     color: white;
     padding: 8px 12px;

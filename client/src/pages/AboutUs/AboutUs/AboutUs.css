@@ -5,38 +5,38 @@
     /* background: #f8f8f8; */
 }
 
-.row{
+.row {
     display: flex;
     justify-content: space-around;
 }
 
-.row .column{
+.row .column {
     width: 40%;
 }
 
-.column .tabs{
+.column .tabs {
     display: flex;
 
 }
 
-.single-tab{
+.single-tab {
     background: white;
     margin-right: 10px;
     cursor: pointer;
     border-radius: 10px;
 }
 
-.single-tab h2{
+.single-tab h2 {
     display: block;
     padding: 10px 16px;
     border-radius: 4px;
-    color : #3c3c3c;
+    color: #3c3c3c;
     font-size: 14px;
     font-weight: 600;
 }
 
 
-.about-img{
+.about-img {
     position: relative;
     background-image: url("./assets/landing.png");
     background-repeat: no-repeat;
@@ -46,17 +46,18 @@
     margin-top: 100px;
 }
 
-.content{
+.content {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     display: none;
 }
 
-.active-tab{
+.active-tab {
     background: #b1dae6;
     color: #3c3c3c;
     position: relative;
 }
+
 /* .active-content::before{
     position: absolute;
     bottom: -5px;
@@ -72,60 +73,62 @@
 
 
 
-.active-tab h2{
+.active-tab h2 {
     color: white;
 
 }
 
-.active-content{
+.active-content {
     display: block;
 }
 
-.content h2{
+.content h2 {
     font-size: 40px;
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 1rem;
 }
 
-.content p{
+.content p {
     padding-bottom: 1rem;
     font-size: 16px;
     line-height: 1.8;
     font-weight: 400;
     color: #999;
 }
-.single-content h3{
+
+.single-content h3 {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1.5;
     margin-bottom: 1rem;
 }
 
-.skills-row{
+.skills-row {
     margin-top: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.skills-column{
+.skills-column {
     margin-bottom: 30px;
     margin-right: 20px;
 }
 
-.progress-wrap h3{
+.progress-wrap h3 {
     font-size: 14px !important;
     margin-bottom: 10px;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-.progress{
+.progress {
     height: 8px;
-    background: rgba(0,0,0,.05);
+    background: rgba(0, 0, 0, .05);
     overflow: visible;
 }
-.progress-bar{
+
+.progress-bar {
     width: 80%;
     height: 8px;
     background: #3F72AF;
@@ -135,7 +138,7 @@
 
 }
 
-.progress-bar span{
+.progress-bar span {
     position: absolute;
     top: -30px;
     right: 0;
@@ -144,41 +147,45 @@
     color: #3F72AF;
 }
 
-.exp-column h3{
+.exp-column h3 {
     margin-bottom: 10px;
 
 }
-.exp-column span{
+
+.exp-column span {
     font-weight: 500;
     color: #3F72AF;
 }
 
-.exp-column p{
+.exp-column p {
     margin-top: 10px;
 }
 
-@media screen and (max-width: 768px){
-    .about{
+@media screen and (max-width: 768px) {
+    .about {
         padding: 2rem 1rem 3rem 1rem;
 
     }
-    .row{
+
+    .row {
         display: flex;
         flex-direction: column;
 
     }
-    .about-img{
+
+    .about-img {
         height: 500px;
     }
-    .row .column{
+
+    .row .column {
         width: 100%;
     }
 
-    .tabs{
+    .tabs {
         padding-top: 3rem;
     }
 
-    .skill-row{
+    .skill-row {
         grid-template-columns: 1fr;
     }
 
@@ -195,46 +202,46 @@
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
     padding: 40px 30px;
     width: 100%;
-  }
-  
-  .why-us .icon-boxes .icon-box i {
+}
+
+.why-us .icon-boxes .icon-box i {
     font-size: 40px;
     color: #dbe2ef;
     margin-bottom: 30px;
-  }
-  
-  .why-us .icon-boxes .icon-box h4 {
+}
+
+.why-us .icon-boxes .icon-box h4 {
     font-size: 20px;
     font-weight: 700;
     margin: 0 0 30px 0;
-  }
-  
-  .why-us .icon-boxes .icon-box p {
+}
+
+.why-us .icon-boxes .icon-box p {
     font-size: 15px;
     color: #848484;
-  }
-  
-  /*--------------------------------------------------------------
+}
+
+/*--------------------------------------------------------------
   # About
   --------------------------------------------------------------*/
-  .about .icon-boxes h4 {
+.about .icon-boxes h4 {
     font-size: 18px;
     color: #4b7dab;
     margin-bottom: 15px;
-  }
-  
-  .about .icon-boxes h3 {
+}
+
+.about .icon-boxes h3 {
     font-size: 28px;
     font-weight: 700;
     color: #2c4964;
     margin-bottom: 15px;
-  }
-  
-  .about .icon-box {
+}
+
+.about .icon-box {
     margin-top: 40px;
-  }
-  
-  .about .icon-box .icon {
+}
+
+.about .icon-box .icon {
     float: left;
     display: flex;
     align-items: center;
@@ -244,46 +251,88 @@
     border: 2px solid #8dc2f1;
     border-radius: 50px;
     transition: 0.5s;
-  }
-  
-  .about .icon-box .icon i {
+}
+
+.about .icon-box .icon i {
     color: #1977cc;
     font-size: 32px;
-  }
-  
-  .about .icon-box:hover .icon {
+}
+
+.about .icon-box:hover .icon {
     background: #1977cc;
     border-color: #1977cc;
-  }
-  
-  .about .icon-box:hover .icon i {
+}
+
+.about .icon-box:hover .icon i {
     color: #fff;
-  }
-  
-  .about .icon-box .title {
+}
+
+.about .icon-box .title {
     margin-left: 85px;
     font-weight: 700;
     margin-bottom: 10px;
     font-size: 18px;
-  }
-  
-  .about .icon-box .title a {
+}
+
+.about .icon-box .title a {
     color: #343a40;
     transition: 0.3s;
     text-decoration: none;
-  }
-  
-  .about .icon-box .title a:hover {
+}
+
+.about .icon-box .title a:hover {
     color: #1977cc;
-  }
-  
-  .about .icon-box .description {
+}
+
+.about .icon-box .description {
     margin-left: 85px;
     line-height: 24px;
     font-size: 14px;
-  }
+}
 
-  .blue-text{
+.blue-text {
     color: #1977cc;
     font-weight: 800;
-  }
+}
+
+.join-mentor-column {
+    margin-top: 40px;
+}
+
+.join-mentor-column h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c4964;
+    margin-bottom: 15px;
+}
+
+.join-mentor-column p {
+    font-size: 15px;
+    color: #848484;
+    margin-bottom: 15px;
+}
+
+.join-mentor-button {
+    margin: 2rem;
+  margin-left: 24%;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  padding: 1em 2.5em;
+  background-color: #ffeba7;
+  color: #5e6681;
+  box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
+  transition: all 0.3s ease-in-out;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
+  letter-spacing: 0.07vw;
+  font-weight: 800;
+}
+
+.join-mentor-button:hover {
+    background-color: #5e6681;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
+}

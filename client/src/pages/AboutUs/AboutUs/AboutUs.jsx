@@ -1,11 +1,18 @@
 import { Fragment, useState } from "react";
 import "./AboutUs.css";
+import { useNavigate } from "react-router-dom";
 
 const AboutUs = () => {
   const [toggleTab, setToggleTab] = useState(1);
   const toggleState = (index) => {
     setToggleTab(index);
   };
+
+  const navigate = useNavigate();
+
+  const handleApplicationClick = () => {
+    navigate("/mentorApplication");
+  }
   
   return (
     <Fragment>
@@ -38,7 +45,7 @@ const AboutUs = () => {
                 }
                 onClick={() => toggleState(3)}
               >
-                <h2 className="">Experience</h2>
+                <h2 className="">Join As Mentor</h2>
               </div>
             </div>
 
@@ -123,44 +130,12 @@ const AboutUs = () => {
                   toggleTab === 3 ? "content active-content" : "content"
                 }
               >
-                <div className="exp-column">
-                  <h3>Web Developer</h3>
-                  <span>2022-Present</span>
+                <div className="join-mentor-column">
+                  <h2>Join As Mentor</h2>
                   <p>
-                    Reprehenderit sunt Lorem mollit elit aliquip in enim
-                    reprehenderit laboris minim est adipisicing. Ullamco
-                    deserunt esse qui nisi nisi. Veniam proident nostrud labore
-                    et do amet ipsum consectetur Lorem aute aliquip enim sint.
-                    Qui laborum officia excepteur aliquip minim sint elit
-                    laboris laborum duis. Consequat do do anim cillum aute ea.
-                    Labore nostrud eu ut dolor cillum aute sit ullamco et.
+                    Are you an expert in your field? Join Learnen as a mentor and share your knowledge with passionate learners. Help them acquire new skills and achieve their goals.
                   </p>
-                </div>
-                <div className="exp-column">
-                  <h3>Graphic Designer</h3>
-                  <span>2020-2022</span>
-                  <p>
-                    Reprehenderit sunt Lorem mollit elit aliquip in enim
-                    reprehenderit laboris minim est adipisicing. Ullamco
-                    deserunt esse qui nisi nisi. Veniam proident nostrud labore
-                    et do amet ipsum consectetur Lorem aute aliquip enim sint.
-                    Qui laborum officia excepteur aliquip minim sint elit
-                    laboris laborum duis. Consequat do do anim cillum aute ea.
-                    Labore nostrud eu ut dolor cillum aute sit ullamco et.
-                  </p>
-                </div>
-                <div className="exp-column">
-                  <h3>Photoshop</h3>
-                  <span>2016-2020</span>
-                  <p>
-                    Reprehenderit sunt Lorem mollit elit aliquip in enim
-                    reprehenderit laboris minim est adipisicing. Ullamco
-                    deserunt esse qui nisi nisi. Veniam proident nostrud labore
-                    et do amet ipsum consectetur Lorem aute aliquip enim sint.
-                    Qui laborum officia excepteur aliquip minim sint elit
-                    laboris laborum duis. Consequat do do anim cillum aute ea.
-                    Labore nostrud eu ut dolor cillum aute sit ullamco et.
-                  </p>
+                  <button className="join-mentor-button" onClick={handleApplicationClick}>Apply Now</button>
                 </div>
               </div>
             </div>

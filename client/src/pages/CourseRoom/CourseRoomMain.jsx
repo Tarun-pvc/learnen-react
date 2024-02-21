@@ -8,8 +8,12 @@ import courseCardImg from "./assets/Course app-amico.png";
 import MusicPlayerCard from "./components/musicPlayerCard";
 import CourseRoomDocuments from "./components/courseRoomDocuments";
 import CourseRoomSchedules from "./components/courseRoomSchedules";
+import CourseRoomParticipants from "./components/courseRoomParticipants";
+import Schoolboy from './assets/Raise a Hand to Answer.png'
+import { useSelector } from "react-redux";
 
 export default function CourseRoomMain() {
+  const user = useSelector((state) => state.wishList.user);
   const staticRating = 3;
   const [selectedItem, setSelectedItem] = useState("Assignments");
   const renderSelectedComponent = () => {
@@ -20,6 +24,8 @@ export default function CourseRoomMain() {
         return <CourseRoomDocuments />;
       case "Schedules":
         return <CourseRoomSchedules />;
+      case "Participants":
+        return <CourseRoomParticipants/>
       default:
         return <CourseRoomAssignments />;
     }
@@ -30,10 +36,10 @@ export default function CourseRoomMain() {
       <div className="cr-sidebar">
         <div className="cr-sidebar-user-data">
           <div className="cr-sidebar-name">
-            <p>Chandra</p>
+            <p>{user.userName}</p>
           </div>
           <div className="cr-sidebar-email">
-            <p>chandra@gmail.com</p>
+            <p>{user.email}</p>
           </div>
         </div>
         <h2>Python</h2>
@@ -68,6 +74,17 @@ export default function CourseRoomMain() {
           </div>
           <div className="cr-sidebar-item-text">
             <p>Schedules</p>
+          </div>
+        </div>
+        <div
+          className="cr-sidebar-item"
+          onClick={() => setSelectedItem("Participants")}
+        >
+          <div className="cr-sidebar-item-icon">
+            <img className="cr-sidebar-item-img" src={Schoolboy} />
+          </div>
+          <div className="cr-sidebar-item-text">
+            <p>Participants</p>
           </div>
         </div>
       </div>
@@ -107,7 +124,7 @@ export default function CourseRoomMain() {
             {renderSelectedComponent()}
           </div>
           <div className="cr-mail-component">
-            <p>Send Message to Mentor</p>
+            <p>Send Message</p>
             <hr />
             <form>
               <div className="cr-mail-subject-input">

@@ -1,9 +1,22 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch } from 'react-redux';
+import { removeFromList } from '../../../features/wishListSlice';
+import {useNavigate} from 'react-router-dom';
 
 export default function WishListPopUp() {
-  const  {wishList} = useSelector((state) => state.wishList); 
-  console.log(wishList)
+  const { wishList } = useSelector((state) => state.wishList);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleDelete = (name) => {
+    console.log(name)
+    dispatch(removeFromList(name));
+    console.log(`Deleting item with name: ${name}`);
+  };
+
+  const handleBuy = () => {
+    navigate(`/courseCheckOut`);
+  };
 
   return (
     <div className="wishlist-popup">
@@ -13,7 +26,13 @@ export default function WishListPopUp() {
       ) : (
         <ul>
           {wishList.map((item) => (
-            <li key={item.id}>{item.name}</li>
+            <li key={item.id}>
+              {item.name}
+              <div className="cart-buttons-container">
+                <button onClick={() => handleDelete(item.name)}>X</button>
+                <button onClick={() => handleBuy()}>Buy</button>
+              </div>
+            </li>
           ))}
         </ul>
       )}

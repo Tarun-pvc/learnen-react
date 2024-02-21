@@ -1,46 +1,49 @@
-import React,{useState} from "react";
-import userIcon from "../assets/user.png"
+import React, { useState } from "react";
+import userIcon from "../assets/user.png";
 function UpdateMP() {
-  const data={
-    firstName:"ram",
-    lastname:"sita",
-    Email:"Ram@gmail.com",
-    bio:"my name is ram, i am from ayodhya",
-    acQua:"bTech",
-    LinkedIn:"https://www.w3schools.com/",
-    portfolio:"https://www.w3schools.com/"
-  }
-  const [fn,setFirstName]=useState(data.firstName)
-  const [ln,setlastName]=useState(data.lastname)
-  const [em,setEmail]=useState(data.Email)
-  const [bi,setBio]=useState(data.bio)
-  const [aq,setAq]=useState(data.acQua)
-  const [li,setLinkedIn]=useState(data.LinkedIn)
-  const [pt,setPortfolio]=useState(data.portfolio)
+  const data = {
+    firstName: "ram",
+    lastname: "sita",
+    Email: "Ram@gmail.com",
+    bio: "my name is ram, i am from ayodhya",
+    acQua: "bTech",
+    LinkedIn: "https://www.w3schools.com/",
+    portfolio: "https://www.w3schools.com/",
+  };
+  const [fn, setFirstName] = useState(data.firstName);
+  const [ln, setlastName] = useState(data.lastname);
+  const [em, setEmail] = useState(data.Email);
+  const [bi, setBio] = useState(data.bio);
+  const [aq, setAq] = useState(data.acQua);
+  const [li, setLinkedIn] = useState(data.LinkedIn);
+  const [pt, setPortfolio] = useState(data.portfolio);
+  const [profileImage, setProfileImage] = useState(null);
 
-  function firstNameHandler(event){
+  function firstNameHandler(event) {
     setFirstName(event.target.value);
   }
-  function lastNameHandler(event){
+  function lastNameHandler(event) {
     setlastName(event.target.value);
   }
-  function emailHandler(event){
+  function emailHandler(event) {
     setEmail(event.target.value);
   }
-  function bioHandler(event){
+  function bioHandler(event) {
     setBio(event.target.value);
   }
-  function aqHandler(event){
+  function aqHandler(event) {
     setAq(event.target.value);
   }
-  function linkedInHandler(event){
+  function linkedInHandler(event) {
     setLinkedIn(event.target.value);
   }
-  function portfolioHandler(event){
+  function portfolioHandler(event) {
     setPortfolio(event.target.value);
   }
-  function submitHandler()
-  {
+  function imageHandler(event) {
+    setProfileImage(event.target.files[0]); 
+  }
+  function submitHandler() {
     console.log(fn);
     console.log(ln);
     console.log(em);
@@ -53,7 +56,21 @@ function UpdateMP() {
     <>
       <div className="updateMP-wrapper">
         <div className="updateMP-top">
-          <img src={userIcon} className="updateMP-userIcon" />
+          {/* Profile Image Uploader */}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={imageHandler}
+            className="updateMP-profileImageInput"
+          />
+          {/* If profile image is selected, display it */}
+          {profileImage && (
+            <img
+              src={URL.createObjectURL(profileImage)}
+              alt="Profile"
+              className="updateMP-userIcon"
+            />
+          )}
         </div>
         <div className="updateMP-bottom">
           <div className="updateMP-bottom1">
@@ -61,12 +78,22 @@ function UpdateMP() {
               <div className="updateMP-input-wrapper">
                 <label>First Name</label>
                 <br></br>
-                <input type="text" className="updateMP-input1" value={fn} onChange={firstNameHandler}></input>
+                <input
+                  type="text"
+                  className="updateMP-input1"
+                  value={fn}
+                  onChange={firstNameHandler}
+                ></input>
               </div>
               <div className="updateMP-input-wrapper">
                 <label>Email Id</label>
                 <br></br>
-                <input type="email" className="updateMP-input1" value={em} onChange={emailHandler}></input>
+                <input
+                  type="email"
+                  className="updateMP-input1"
+                  value={em}
+                  onChange={emailHandler}
+                ></input>
               </div>
               <div className="updateMP-input-wrapper">
                 <label>Date of Birth</label>
@@ -76,9 +103,12 @@ function UpdateMP() {
               <div className="updateMP-input-wrapper">
                 <label>Bio</label>
                 <br></br>
-                <textarea className="updateMP-input-bio"  value={bi} onChange={bioHandler}></textarea>
+                <textarea
+                  className="updateMP-input-bio"
+                  value={bi}
+                  onChange={bioHandler}
+                ></textarea>
               </div>
-              
             </div>
           </div>
           <div className="updateMP-bottom2">
@@ -86,12 +116,22 @@ function UpdateMP() {
               <div className="updateMP-input-wrapper">
                 <label>Last Name</label>
                 <br></br>
-                <input  type="text" className="updateMP-input1"  value={ln} onChange={lastNameHandler}></input>
+                <input
+                  type="text"
+                  className="updateMP-input1"
+                  value={ln}
+                  onChange={lastNameHandler}
+                ></input>
               </div>
               <div className="updateMP-input-wrapper">
                 <label>Academic Qualifications</label>
                 <br></br>
-                <input  type="text" className="updateMP-input" value={aq}  onChange={aqHandler}></input>
+                <input
+                  type="text"
+                  className="updateMP-input"
+                  value={aq}
+                  onChange={aqHandler}
+                ></input>
               </div>
               <p className="updateMP-socials">
                 <u>Socials</u>
@@ -99,18 +139,30 @@ function UpdateMP() {
               <div className="updateMP-input-wrapper">
                 <label>LinkedIn</label>
                 <br></br>
-                <input  type="url" className="updateMP-input1"  value={li} onChange={linkedInHandler}></input>
+                <input
+                  type="url"
+                  className="updateMP-input1"
+                  value={li}
+                  onChange={linkedInHandler}
+                ></input>
               </div>
               <div className="updateMP-input-wrapper">
                 <label>portfolio</label>
                 <br></br>
-                <input  type="url" className="updateMP-input"  value={pt} onChange={portfolioHandler}></input>
+                <input
+                  type="url"
+                  className="updateMP-input"
+                  value={pt}
+                  onChange={portfolioHandler}
+                ></input>
               </div>
             </div>
           </div>
         </div>
         <div className="updateMP-update">
-          <button className="updateMP-updateBtn" onClick={submitHandler}>Update</button>
+          <button className="updateMP-updateBtn" onClick={submitHandler}>
+            Update
+          </button>
         </div>
       </div>
     </>
