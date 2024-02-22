@@ -44,7 +44,7 @@ export default function StudentDashboard() {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log("data",data);
+      console.log(data);
       dispatch(addUser(data));
     })
     .catch((err) => {

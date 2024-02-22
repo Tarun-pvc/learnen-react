@@ -3,12 +3,23 @@ import React from "react";
 import welcome from "../assets/welcome.png";
 import courses from "../assets/courses.png";
 import { useDispatch , useSelector } from "react-redux";
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 import MySchedule from "./MySchedule";
 
 
+
+const data = [
+  { name: 'Python', value: 400 },
+  { name: 'Java', value: 300 },
+  { name: 'DBMS', value: 200 },
+  { name: 'DevOps', value: 500 }
+];
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; 
+
 export default function SdMiddle() {
-  const user = JSON.parse(localStorage.getItem("loginUser"));
+  const user = useSelector((state) => state.wishList.user);
   console.log(user)
   return (
     <div className="sd-Middle-wrapper">
@@ -39,7 +50,23 @@ export default function SdMiddle() {
           </div>
         </div>
         <div className="sd-CourseAnalytics-piechart">
-          <img src={courses} alt="Courses" />
+        <ResponsiveContainer width="100%" height={400}>
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+        </PieChart>
+        </ResponsiveContainer>
         </div>
       </div>
       <div className="sd-Middle-Schedule-wrapper">
