@@ -19,6 +19,7 @@ function LoginPage() {
     })
     .then((result)=>{
       console.log(result);
+      localStorage.setItem("loginUser",JSON.stringify(result.data));
       dispatch(addUser(result.data));
       if(result.data.Position==="student")
       {

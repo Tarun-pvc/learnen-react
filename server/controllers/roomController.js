@@ -2,7 +2,7 @@ const { mongoose } = require('mongoose');
 const Room = require('../models/RoomModel');
 const User = require('../models/UserModel');
 
-const adminRoomList = async (req, res) => {
+const adminRoomList = async (req, res , next) => {
     console.log("Inside adminRoomList function");
     if (true) {
         try {
@@ -25,6 +25,7 @@ const adminRoomList = async (req, res) => {
         } catch (err) {
             console.log(err);
             res.status(500).json({ error: "Could not fetch rooms" });
+            next(err);
         }
     } else {
         res.status(500).json({ error: "Not an admin" });
@@ -32,7 +33,7 @@ const adminRoomList = async (req, res) => {
     }
 };
 
-const buyCourse = async (req, res) => {
+const buyCourse = async (req, res,next) => {
     console.log("Inside buyCourse function");
     const { roomId } = req.params;
     const { userId } = req.body;
@@ -74,10 +75,11 @@ const buyCourse = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not add course" });
+        next(err);
     }
 }
 
-const getCourses = async (req, res) => {
+const getCourses = async (req, res,next) => {
     console.log("Inside getCourses function");
     const { userId } = req.session.user;
     console.log(userId);
@@ -93,10 +95,11 @@ const getCourses = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
+        next(err);
     }
 }
 
-const getExploreCourses = async (req, res) => {
+const getExploreCourses = async (req, res,next) => {
     console.log("Inside getExploreCourses function");
     try {
         const courses = await Room.find();
@@ -104,11 +107,12 @@ const getExploreCourses = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
+        next(err);
     }
 }
 
 //A function user create to add room to mongodb whihc is created by mentor 
-const addRoom = async (req, res) => {
+const addRoom = async (req, res,next) => {
     console.log("Inside addRoom function");
     const { roomTitle , price , meetLink , skills , description , userId } = req.body;
     console.log(userId);
@@ -135,10 +139,11 @@ const addRoom = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not add room" });
+        next(err);
     }
 }   
 
-const getCreatedCourses = async (req, res) => {
+const getCreatedCourses = async (req, res,next) => {
     console.log("Inside getCreatedCourses function");
     const  userId  = req.body.userId;
     console.log(userId);
@@ -155,6 +160,7 @@ const getCreatedCourses = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
+        next(err);
     }
 }
 

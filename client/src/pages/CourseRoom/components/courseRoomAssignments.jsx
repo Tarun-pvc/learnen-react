@@ -7,6 +7,8 @@ export default function CourseRoomAssignments() {
   const user = useSelector((state) => state.wishList.user);
   const [showPopup, setShowPopup] = useState(false);
 
+  
+
   const handleAddAssignment = () => {
     setShowPopup(true);
   };
@@ -15,15 +17,22 @@ export default function CourseRoomAssignments() {
   };
   return (
     <div className="cr-assignments-main">
+      <div className="cr-assignments-header">
       <h1>Assignments</h1>
       {user.Position === "mentor" && (
-              <button onClick={handleAddAssignment}>+</button>
-          )}
-      <hr/>
+        <button
+          className="cr-add-assignment-button"
+          onClick={handleAddAssignment}
+        >
+          Add Assignment
+        </button>
+      )}
+      </div>
+      
+      <hr />
       <div className="cr-assignments-item">
         <div className="cr-assignments-item-heading">
           <h2>Assigned</h2>
-          
         </div>
         <div className="cr-assignments-assigned-list-items-wrapper">
           <div className="cr-assignment-assigned-item">
@@ -160,29 +169,31 @@ export default function CourseRoomAssignments() {
         </div>
       </div>
       {showPopup && (
-        <div className="assignment-popup">
-          <h1>Add Assignment</h1>
-          <input
-            type="text"
-            placeholder="Assignment Title"
-            className="assignment-popup-input"
-          />
-          <input
-            type="text"
-            placeholder="Deadline"
-            className="assignment-popup-input"
-          />
-          <input
-            type="text"
-            placeholder="Link"
-            className="assignment-popup-input"
-          />
-          <div className="assignment-popup-buttons">
-            <button onClick={() => handleCancelAssignment()}>Cancel</button>
-            <button >Submit</button>
+        <div className="overlay">
+          <div className="assignment-popup">
+            <h1>Add Assignment</h1>
+            <input
+              type="text"
+              placeholder="Assignment Title"
+              className="assignment-popup-input"
+            />
+            <input
+              type="text"
+              placeholder="Deadline"
+              className="assignment-popup-input"
+            />
+            <input
+              type="text"
+              placeholder="Link"
+              className="assignment-popup-input"
+            />
+            <div className="assignment-popup-buttons">
+              <button onClick={handleCancelAssignment}>Cancel</button>
+              <button>Submit</button>
+            </div>
           </div>
         </div>
       )}
-      </div>
-      );
-      }
+    </div>
+  );
+}

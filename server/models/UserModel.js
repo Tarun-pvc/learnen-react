@@ -43,6 +43,13 @@ const UserModel = new  mongoose.Schema({
     Created_Room: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Room' }],
     Position: { type: String, enum: ['student', 'mentor', 'admin'] },
     Tags: [String],
+    displayPicture: { type: String },
+    bio: { type: String },
+    dateOfBirth: { type: Date },
+    academicQualifications: { type: String },
+    Linkedin: { type: String },
+    Portfolio: { type: String },
+    profileImage: { type: String },
     
 })
 

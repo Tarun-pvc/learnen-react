@@ -1,7 +1,24 @@
 const express = require('express')
-const { registerUser, loginUser, logoutUser } = require('../controllers/userController')
+const { registerUser, loginUser, logoutUser , updateUser } = require('../controllers/userController')
 const { getDashboard } = require('../controllers/dashboard')
 const { adminRoomList, buyCourse, getCourses, getExploreCourses , addRoom , getCreatedCourses } = require('../controllers/roomController')
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 10 * 1024 * 1024 }
+});
+
 const router = express.Router();
 
 router.post("/signup", registerUser);
@@ -14,6 +31,10 @@ router.get('/explorecourses', getExploreCourses);
 router.post('/buycourse', buyCourse);
 router.post('/addroom', addRoom);
 router.post('/getcreatedcourses', getCreatedCourses);
+router.post('/updateuser', upload.single("profileImage"),(req, res, next) => {
+    req.fileName = req.file.filename;
+    next(); 
+}, updateUser);
 
 
 module.exports = router;

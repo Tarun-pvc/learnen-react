@@ -42,6 +42,7 @@ function CreateRoom() {
       })
       .catch((err) => {
         console.log(err);
+        window.location.href = "/error";
       });
   };
 
