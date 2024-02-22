@@ -149,7 +149,7 @@
 
 .sd-CourseAnalytics-wrapper {
     width: 58vw;
-    height: 45vh;
+    height: 60vh;
     border-radius: 13px;
     background-color: #dbe2ef;
     margin-top: 3vh;
@@ -187,13 +187,14 @@
     font-weight: 500;
 }
 
-.sd-CourseAnalytics-piechart>img {
+/* .sd-CourseAnalytics-piechart>img {
     max-width: 350px;
     max-height: 350px;
     margin-top: -5vh;
     margin-left: 18vw;
-    /* margin-bottom: 6vh; */
-}
+    margin-bottom: 6vh;
+} */
+
 
 .sd-Middle-Schedule-wrapper {
     width: 58vw;
