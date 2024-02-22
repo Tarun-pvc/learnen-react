@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const AssignmentModel = new mongoose.Schema({
+const ResourceModel = new mongoose.Schema({
     title: {
         type:String
     },
@@ -12,5 +12,5 @@ const AssignmentModel = new mongoose.Schema({
     }
 })
 
-const Assignment = mongoose.model('Assignment',AssignmentModel);
-module.exports = Assignment;
+const Resource = mongoose.model('Resource',ResourceModel);
+module.exports = Resource;
