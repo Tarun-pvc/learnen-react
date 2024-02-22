@@ -1,9 +1,9 @@
 const express = require('express')
-const { registerUser, loginUser, logoutUser , updateUser } = require('../controllers/userController')
+const { registerUser, loginUser, logoutUser, updateUser,getUserDetails } = require('../controllers/userController')
 const { getDashboard } = require('../controllers/dashboard')
-const { adminRoomList, buyCourse, getCourses, getExploreCourses , addRoom , getCreatedCourses } = require('../controllers/roomController')
-const {createAssignment, getAssignments} = require('../controllers/assignmentsController')
-const {createResource, getResources} = require('../controllers/resourceController')
+const { adminRoomList, buyCourse, getCourses, getExploreCourses, addRoom, getCreatedCourses } = require('../controllers/roomController')
+const { createAssignment, getAssignments } = require('../controllers/assignmentsController')
+const { createResource, getResources } = require('../controllers/resourceController')
 const multer = require('multer');
 const path = require('path');
 
@@ -33,14 +33,14 @@ router.get('/explorecourses', getExploreCourses);
 router.post('/buycourse', buyCourse);
 router.post('/addroom', addRoom);
 router.post('/getcreatedcourses', getCreatedCourses);
-router.post('/updateuser', upload.single("profileImage"),(req, res, next) => {
+router.post('/updateuser', upload.single("profileImage"), (req, res, next) => {
     req.fileName = req.file.filename;
-    next(); 
+    next();
 }, updateUser);
 router.post('/addassignment', createAssignment);
 router.get('/getassignments', getAssignments);
 router.post('/addresource', createResource);
 router.get('/getresources', getResources);
-
+router.get('/getupdateuser', getUserDetails);
 
 module.exports = router;
