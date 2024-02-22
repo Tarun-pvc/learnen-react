@@ -20,7 +20,6 @@ function ToDo() {
           });
         setTask("");
     }
-    // console.log(tasksList);
   }
 
   function deleteItem(id1)

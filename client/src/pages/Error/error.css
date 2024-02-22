@@ -1,0 +1,59 @@
+/* error.css */
+
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    padding: 16px;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .error-content {
+    text-align: center;
+  }
+  
+  .error-title {
+    margin-bottom: 32px;
+    font-weight: bold;
+    font-size: 6rem;
+    color: #D24545; /* dark gray */
+  }
+  
+  .error-message {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #495057; /* dark gray */
+  }
+  
+  .error-description {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+    color: #6c757d; /* gray */
+  }
+  
+  .back-to-home {
+    display: inline-block;
+    padding: 12px 24px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    background-color: #6c757d; /* gray */
+    color: #ffffff; /* white */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-to-home:hover {
+    background-color: #495057; /* dark gray */
+  }
+  

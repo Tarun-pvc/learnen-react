@@ -3,11 +3,14 @@ import { useNavigate } from "react-router-dom";
 import "./fdfedLogin.css";
 import LoginImage from "./assets/Mobile-login-Cristina-removebg.png";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../features/wishListSlice";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const HandleLoginSubmit = (event) => {
     event.preventDefault();
     axios.post("http://localhost:3000/api/login", {
@@ -16,7 +19,18 @@ function LoginPage() {
     })
     .then((result)=>{
       console.log(result);
-      navigate("/mentorDashboard");
+      localStorage.setItem("loginUser",JSON.stringify(result.data));
+      dispatch(addUser(result.data));
+      if(result.data.Position==="student")
+      {
+        navigate('/studentDashboard');
+      }
+      else if(result.data.Position==="mentor"){
+        navigate('/mentorDashboard');
+      }
+      else if(result.data.Position==="admin"){
+        navigate('/adminDashboard');
+      }
     })
     .catch((err)=>{
       console.error(err);

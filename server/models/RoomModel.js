@@ -26,7 +26,8 @@ const RoomModel = new mongoose.Schema({
         type:String
     },
     stars:{
-        type:String
+        type:String,
+        default:4.5
     },
     reports:[{type:mongoose.Schema.Types.ObjectId, ref:'Report'}]
 })
