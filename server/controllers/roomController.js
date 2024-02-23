@@ -35,8 +35,8 @@ const adminRoomList = async (req, res , next) => {
 
 const buyCourse = async (req, res,next) => {
     console.log("Inside buyCourse function");
-    const { roomId } = req.params;
-    const { userId } = req.body;
+    const userId = req.body.userId;
+    const roomId = req.body.roomId;
     console.log(roomId, userId);
     try {
         const room = await Room.findById(roomId);
@@ -51,7 +51,6 @@ const buyCourse = async (req, res,next) => {
             res.status(400).json({ error: "User already in course" });
             return;
         }
-
 
         userCourses.push(roomId);
         roomParticipants.push(userId);

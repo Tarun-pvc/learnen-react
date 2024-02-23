@@ -11,7 +11,7 @@ export default function CourseCheckout() {
   return (
     <div className="checkout-wrapper">
       <div className="checkout-main-wrapper">
-        <CourseCard />
+        <CourseCard/>
         <Description />
       </div>
     </div>

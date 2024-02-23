@@ -13,20 +13,17 @@ import { addToList } from "../../../features/wishListSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function CourseCard(cardData) {
-  console.log(cardData)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleAddCart = (title) => {
-    console.log("Add to cart clicked");
     dispatch(addToList({ id: 1, name: title }));
   };
 
-  const handleAddCourseId = (id) => {
-    console.log("Add to cart clicked");
-    JSON.stringify(localStorage.setItem("coursecheckoutId", id));
-  }
-  
+  const handleAddCourseId = (cardData) => {
+    localStorage.setItem("courseCheckout", JSON.stringify(cardData));
+  };
+
   return (
     <div className="course-card-wrapper">
       <div className="course-card-image">
@@ -36,7 +33,9 @@ export default function CourseCard(cardData) {
         <h2>{cardData.cardData.title}</h2>
         <div className="course-card-pricing-duration">
           <div className="course-card-price">
-            <h3>Price: <span>{cardData.cardData.price}$</span></h3>
+            <h3>
+              Price: <span>{cardData.cardData.price}$</span>
+            </h3>
           </div>
           <div className="course-card-duration">
             <h3>Duration: 40 days</h3>
@@ -52,12 +51,17 @@ export default function CourseCard(cardData) {
               className="course-cart-icon"
               src={cart}
               alt=""
-              onClick={()=>handleAddCart(cardData.cardData.title)}
+              onClick={() => handleAddCart(cardData.cardData.title)}
             />
-            <img className="course-buy-icon" src={buy} alt="" onClick={()=>{
-              handleAddCourseId(cardData.cardData._id);
-              navigate('/courseCheckOut')
-            }}/>
+            <img
+              className="course-buy-icon"
+              src={buy}
+              alt=""
+              onClick={() => {
+                handleAddCourseId(cardData);
+                navigate("/courseCheckOut");
+              }}
+            />
           </div>
         </div>
       </div>
