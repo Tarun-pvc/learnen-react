@@ -11,7 +11,6 @@ export default function Explore() {
   fetch("http://localhost:3000/api/explorecourses")
   .then((res)=>res.json())
   .then((data)=>{
-    console.log(data.courses)
     setExplorecourses(data.courses)
   })
   .catch((err)=>{
