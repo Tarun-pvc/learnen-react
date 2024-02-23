@@ -34,14 +34,16 @@ router.get('/explorecourses', getExploreCourses);
 router.post('/buycourse', buyCourse);
 router.post('/addroom', addRoom);
 router.post('/getcreatedcourses', getCreatedCourses);
-router.post('/updateuser', upload.single("profileImage"),(req, res, next) => {
+router.post('/updateuser', upload.single("profileImage"), (req, res, next) => {
     req.fileName = req.file.filename;
-    next(); 
+    next();
 }, updateUser);
 router.post('/addassignment', createAssignment);
 router.get('/getassignments', getAssignments);
 router.post('/addresource', createResource);
 router.get('/getresources', getResources);
+router.get('/getupdateuser', getUserDetails);
+
 
 
 module.exports = router;
