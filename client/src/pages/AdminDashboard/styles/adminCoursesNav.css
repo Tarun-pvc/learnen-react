@@ -74,6 +74,7 @@
     align-items: center;
     gap: 10rem;
     padding-left: 2rem;
+    cursor: pointer;
 }
 
 .admin-courses-sort-list>h2{

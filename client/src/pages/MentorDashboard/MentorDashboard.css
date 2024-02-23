@@ -349,7 +349,7 @@
 .md-todo-input-wrapper .md-todo-input {
   
   float:left;
-  max-height: 36px;
+  max-height: 30px;
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   transition-duration: 200ms;
   transition-property: background-color;

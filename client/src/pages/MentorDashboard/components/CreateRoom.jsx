@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import img1 from "../assets/college project-pana.png"
 import img2 from "../assets/college project-bro.png"
 import img3 from "../assets/college project-rafiki.png"
+import { useSelector } from "react-redux";
 // import img4 from "../assets/college project-amico.png"
 
 function CreateRoom() {
+  const user = useSelector((state) => state.wishList.user);
     const data=[img1,img2,img3];
     const random = Math.round(Math.random()* 2)
   const [formData, setFormData] = useState({
     roomTitle: "",
-    Duration: "",
+    price: "",
     meetLink: "",
     skills: "",
     description: "",
+    userId: user._id
   });
 
   const handleInputChange = (e) => {
@@ -24,7 +27,23 @@ function CreateRoom() {
   };
 
   const handleSubmit = () => {
+    //Add data to mongodb using fetch
     console.log(formData);
+    fetch("http://localhost:3000/api/addRoom", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        window.location.href = "/error";
+      });
   };
 
   return (
@@ -50,9 +69,9 @@ function CreateRoom() {
                 <input
                   type="number"
                   className="createroom-input2"
-                  placeholder="Duration"
-                  name="Duration"
-                  value={formData.Duration}
+                  placeholder="Price"
+                  name="price"
+                  value={formData.price}
                   onChange={handleInputChange}
                 />
               </div>

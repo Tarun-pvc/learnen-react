@@ -29,7 +29,7 @@ export default function AdminDashboardMain() {
   return (
     <div className="admin-dashboard-main">
       <div className="admin-sidebar">
-        <AdminSidebar onMenuItemClick={(item) => setSelectedItem(item)}/>
+        <AdminSidebar onMenuItemClick={(item) => setSelectedItem(item)} selectedItem = {selectedItem} />
       </div>
       <div className="admin-main-wrapper">
         {renderSelectedComponent()}
