@@ -1,62 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 import "../styles/CourseRoomAssignments.css";
 import { useSelector } from "react-redux";
 
 export default function CourseRoomAssignments() {
   const user = useSelector((state) => state.wishList.user);
-const [assignments, setAssignments] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
-const [title, setTitle] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const [link, setLink] = useState("");
 
-  useEffect(() => {
-    fetchAssignments();
-  }, []);
-
-  const fetchAssignments = () => {
-    fetch("http://localhost:3000/api/getassignments")
-      .then((res) => res.json())
-      .then((data) => {
-        setAssignments(data.assignments);
-      })
-      .catch((err) => {
-        console.error("Error fetching assignments:", err);
-      });
-  };
-
-  function submitHandler() {
-    const assignment = {
-      title,
-      deadline,
-      link,
-    };
-    fetch("http://localhost:3000/api/addassignment", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(assignment),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        fetchAssignments();
-      })
-      .catch((err) => {
-        console.error("Error adding assignment:", err);
-        window.location.href = "/error";
-      });
-  }
+  
 
   const handleAddAssignment = () => {
     setShowPopup(true);
   };
-
   const handleCancelAssignment = () => {
     setShowPopup(false);
   };
-
   return (
     <div className="cr-assignments-main">
       <div className="cr-assignments-header">
@@ -73,35 +31,142 @@ const [title, setTitle] = useState("");
       
       <hr />
       <div className="cr-assignments-item">
-        {assignments.map((assignment) => (
-          <div className="cr-assignment-assigned-item" key={assignment.id}>
+        <div className="cr-assignments-item-heading">
+          <h2>Assigned</h2>
+        </div>
+        <div className="cr-assignments-assigned-list-items-wrapper">
+          <div className="cr-assignment-assigned-item">
             <div className="cr-assignment-assigned-item-content">
               <div className="cr-assignments-new-left">
                 <div>
                   <div className="cr-assignments-new-left-name">
-                    {assignment.title}
+                    Alice in the Wonderland
                   </div>
                   <div className="cr-assignments-new-left-lecture">
                     Literature
                   </div>
-                                  <div className="cr-assignments-new-left-lecture">
-                    {assignment.course}
+                </div>
+              </div>
+              <div className="cr-assignments-new-right"></div>
+
+              <div>
+                <div className="cr-assignments-new-right-time">25.08.2023</div>
+                <br></br>
+                <a className="cr-assignments-new-right-view">View</a>
+              </div>
+            </div>
+          </div>
+          <div className="cr-assignment-assigned-item">
+            <div className="cr-assignment-assigned-item-content">
+              <div className="cr-assignments-new-left">
+                <div>
+                  <div className="cr-assignments-new-left-name">
+                    Alice in the Wonderland
+                  </div>
+                  <div className="cr-assignments-new-left-lecture">
+                    Literature
                   </div>
                 </div>
               </div>
               <div className="cr-assignments-new-right"></div>
+
               <div>
-                <div className="cr-assignments-new-right-time">
-                  {assignment.deadline}
-                </div>
-              <br />
-                <a href={assignment.link} className="cr-assignments-new-right-view">
-                  View
-                </a>
+                <div className="cr-assignments-new-right-time">25.08.2023</div>
+                <br></br>
+                <a className="cr-assignments-new-right-view">View</a>
               </div>
             </div>
           </div>
-        ))}
+          <div className="cr-assignment-assigned-item">
+            <div className="cr-assignment-assigned-item-content">
+              <div className="cr-assignments-new-left">
+                <div>
+                  <div className="cr-assignments-new-left-name">
+                    Alice in the Wonderland
+                  </div>
+                  <div className="cr-assignments-new-left-lecture">
+                    Literature
+                  </div>
+                </div>
+              </div>
+              <div className="cr-assignments-new-right"></div>
+
+              <div>
+                <div className="cr-assignments-new-right-time">25.08.2023</div>
+                <br></br>
+                <a className="cr-assignments-new-right-view">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="cr-assignments-item-heading">
+          <h2>Submitted</h2>
+        </div>
+        <div className="cr-assignments-assigned-list-items-wrapper">
+          <div className="cr-assignment-assigned-item">
+            <div className="cr-assignment-assigned-item-content">
+              <div className="cr-assignments-new-left">
+                <div>
+                  <div className="cr-assignments-new-left-name">
+                    Alice in the Wonderland
+                  </div>
+                  <div className="cr-assignments-new-left-lecture">
+                    Literature
+                  </div>
+                </div>
+              </div>
+              <div className="cr-assignments-new-right"></div>
+
+              <div>
+                <div className="cr-assignments-new-right-time">25.08.2023</div>
+                <br></br>
+                <a className="cr-assignments-new-right-view">View</a>
+              </div>
+            </div>
+          </div>
+          <div className="cr-assignment-assigned-item">
+            <div className="cr-assignment-assigned-item-content">
+              <div className="cr-assignments-new-left">
+                <div>
+                  <div className="cr-assignments-new-left-name">
+                    Alice in the Wonderland
+                  </div>
+                  <div className="cr-assignments-new-left-lecture">
+                    Literature
+                  </div>
+                </div>
+              </div>
+              <div className="cr-assignments-new-right"></div>
+
+              <div>
+                <div className="cr-assignments-new-right-time">25.08.2023</div>
+                <br></br>
+                <a className="cr-assignments-new-right-view">View</a>
+              </div>
+            </div>
+          </div>
+          <div className="cr-assignment-assigned-item">
+            <div className="cr-assignment-assigned-item-content">
+              <div className="cr-assignments-new-left">
+                <div>
+                  <div className="cr-assignments-new-left-name">
+                    Alice in the Wonderland
+                  </div>
+                  <div className="cr-assignments-new-left-lecture">
+                    Literature
+                  </div>
+                </div>
+              </div>
+              <div className="cr-assignments-new-right"></div>
+
+              <div>
+                <div className="cr-assignments-new-right-time">25.08.2023</div>
+                <br></br>
+                <a className="cr-assignments-new-right-view">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       {showPopup && (
         <div className="overlay">
@@ -111,23 +176,20 @@ const [title, setTitle] = useState("");
               type="text"
               placeholder="Assignment Title"
               className="assignment-popup-input"
-onChange={(e) => setTitle(e.target.value)}
             />
             <input
               type="text"
               placeholder="Deadline"
               className="assignment-popup-input"
-onChange={(e) => setDeadline(e.target.value)}
             />
             <input
               type="text"
               placeholder="Link"
               className="assignment-popup-input"
-onChange={(e) => setLink(e.target.value)}
             />
             <div className="assignment-popup-buttons">
               <button onClick={handleCancelAssignment}>Cancel</button>
-              <button onClick={submitHandler}>Submit</button>
+              <button>Submit</button>
             </div>
           </div>
         </div>

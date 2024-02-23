@@ -12,7 +12,7 @@ import axios from "axios"
 function SdRightBar() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.wishList.user);
+  const user = JSON.parse(localStorage.getItem("loginUser"));
   console.log(user)
 
   const handleLogout = () => {

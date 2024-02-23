@@ -104,7 +104,7 @@ const updateUser = async (req, res, next) => {
         user.dateOfBirth = formdata.dateOfBirth;
         console.log("filename",req.fileName);
         if (req.fileName) {
-            user.profileImage = "/uploads/"+req.fileName;
+            user.profileImage = "/"+req.fileName;
         }
 
         await user.save();
@@ -118,11 +118,30 @@ const updateUser = async (req, res, next) => {
     }
 }
 
+const getUserDetails = async (req, res, next) => {
+    const userId = req.query.userId;
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            res.status(404).json({ error: "User not found" });
+            return;
+        }
+        console.log(user);
+        res.status(200).json(user);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Could not get user" });
+        next(err);
+    }  
+}
+
+
 
 module.exports = {
     registerUser,
     loginUser,
     logoutUser,
-    updateUser
+    updateUser,
+    getUserDetails
 }
 

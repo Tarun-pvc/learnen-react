@@ -3,6 +3,20 @@ import NewSchedule from "./NewSchedule";
 import Welcome from "../assets/Screenshot_2023-11-06_113903-removebg-preview.png";
 import { useSelector } from "react-redux";
 
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+
+
+const data = [
+  { name: 'Python', value: 400 },
+  { name: 'Java', value: 300 },
+  { name: 'DBMS', value: 200 },
+  { name: 'DevOps', value: 500 }
+];
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; 
+
+import { useSelector } from "react-redux";
+
 function MdMiddle() {
   const user = JSON.parse(localStorage.getItem("loginUser"));
 
@@ -37,7 +51,24 @@ function MdMiddle() {
             Number of Students : <b> 3740</b>
           </div>
         </div>
-        </div>
+        <ResponsiveContainer width="100%" height={400}>
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+        </PieChart>
+        </ResponsiveContainer>
+      </div>
       </div>
       <div className="md-Middle-Schedule-wrapper">
         <div className="md-Middle-ScheduleHead">My Schedule</div>
