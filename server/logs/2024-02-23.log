@@ -8998,3 +8998,5 @@ GET /api/dashboard 201 - - 1.192 ms
 GET /api/dashboard 201 - - 0.839 ms
 GET /api/getupdateuser?userId=65d8445dd23d80a9da253e98 304 - - 262.656 ms
 GET /api/getupdateuser?userId=65d8445dd23d80a9da253e98 304 - - 260.061 ms
+GET /api/dashboard 201 - - 4.133 ms
+GET /api/dashboard 201 - - 1.684 ms
