@@ -45,31 +45,20 @@ const buyCourse = async (req, res,next) => {
             res.status(404).json({ error: "Room or User not found" });
             return;
         }
-        const mentor = room.mentor.user;
-        const mentorDetails = await User.findById(mentor);
-        const userCourses = user.courses;
-        const mentorCourses = mentorDetails.courses;
-        const roomCourses = room.courses;
-        if (userCourses.includes(roomId)) {
-            res.status(400).json({ error: "User already has this course" });
+        const userCourses = user.Joined_Room;
+        const roomParticipants = room.participants;
+        if (userCourses.includes(roomId) || roomParticipants.includes(userId)) {
+            res.status(400).json({ error: "User already in course" });
             return;
         }
-        if (mentorCourses.includes(roomId)) {
-            res.status(400).json({ error: "Mentor already has this course" });
-            return;
-        }
-        if (roomCourses.includes(roomId)) {
-            res.status(400).json({ error: "Room already has this course" });
-            return;
-        }
+
+
         userCourses.push(roomId);
-        mentorCourses.push(roomId);
-        roomCourses.push(roomId);
-        user.courses = userCourses;
-        mentorDetails.courses = mentorCourses;
-        room.courses = roomCourses;
+        roomParticipants.push(userId);
+        user.Joined_Room = userCourses;
+        room.participants = roomParticipants;
+        
         await user.save();
-        await mentorDetails.save();
         await room.save();
         res.status(200).json({ message: "Course added successfully" });
     } catch (err) {

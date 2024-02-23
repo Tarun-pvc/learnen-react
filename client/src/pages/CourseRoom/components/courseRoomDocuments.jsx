@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import "../styles/CourseRoomAssignments.css";
 
 export default function CourseRoomDocuments() {
-const user = useSelector((state) => state.wishList.user);
+  const user = useSelector((state) => state.wishList.user);
   const [showPopup, setShowPopup] = useState(false);
 
   const handleAddDocument = () => {
@@ -17,8 +17,8 @@ const user = useSelector((state) => state.wishList.user);
   return (
     <div className="cr-assignments-main">
       <div className="cr-assignments-header">
-      <h1>Documents</h1>
-      {user.Position === "mentor" && (
+        <h1>Documents</h1>
+        {user.Position === "mentor" && (
           <button
             className="cr-add-assignment-button"
             onClick={handleAddDocument}
@@ -98,7 +98,7 @@ const user = useSelector((state) => state.wishList.user);
           </div>
         </div>
       </div>
-{showPopup && (
+      {showPopup && (
         <div className="overlay">
           <div className="assignment-popup">
             <h1>Add Document</h1>

@@ -21,6 +21,11 @@ export default function CourseCard(cardData) {
     console.log("Add to cart clicked");
     dispatch(addToList({ id: 1, name: title }));
   };
+
+  const handleAddCourseId = (id) => {
+    console.log("Add to cart clicked");
+    JSON.stringify(localStorage.setItem("coursecheckoutId", id));
+  }
   
   return (
     <div className="course-card-wrapper">
@@ -34,7 +39,7 @@ export default function CourseCard(cardData) {
             <h3>Price: <span>{cardData.cardData.price}$</span></h3>
           </div>
           <div className="course-card-duration">
-            <h3>Duration: <span>{cardData.cardData.duration}</span></h3>
+            <h3>Duration: 40 days</h3>
           </div>
         </div>
         <div className="course-card-rating-buttons">
@@ -50,6 +55,7 @@ export default function CourseCard(cardData) {
               onClick={()=>handleAddCart(cardData.cardData.title)}
             />
             <img className="course-buy-icon" src={buy} alt="" onClick={()=>{
+              handleAddCourseId(cardData.cardData._id);
               navigate('/courseCheckOut')
             }}/>
           </div>
