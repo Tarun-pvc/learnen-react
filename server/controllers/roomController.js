@@ -87,6 +87,24 @@ const getCourses = async (req, res,next) => {
         next(err);
     }
 }
+const getCourse = async (req, res,next) => {
+    console.log("Inside getCourses function");
+    const courseId = req.query.courseId;
+    console.log("backend"+courseId);
+    try {
+        const room = await Room.findById(courseId);
+        console.log("room",room);
+        if (!room) {
+            res.status(404).json({ error: "Course not found" });
+            return;
+        }
+        res.status(200).json({ course: room });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Could not fetch courses" });
+        next(err);
+    }
+}
 
 const getExploreCourses = async (req, res,next) => {
     console.log("Inside getExploreCourses function");
@@ -159,5 +177,6 @@ module.exports = {
     getCourses,
     getExploreCourses,
     addRoom,
-    getCreatedCourses
+    getCreatedCourses,
+    getCourse
 };

@@ -29,6 +29,10 @@ const RoomModel = new mongoose.Schema({
         type:String,
         default:4.5
     },
+    assignment:{
+        type:Array,
+        default:[],
+    },
     reports:[{type:mongoose.Schema.Types.ObjectId, ref:'Report'}]
 })
 

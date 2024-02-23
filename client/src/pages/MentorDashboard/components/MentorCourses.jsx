@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 
 function MentorCourses() {
   const [courses,setCourses] = useState([]);
-  const user = useSelector(state => state.wishList.user);
+  const user = JSON.parse(localStorage.getItem("loginUser"));
 
   const getCreatedCourses = async () => {
     try {
@@ -45,6 +45,7 @@ useEffect(() => {
           {courses.map((course) => (
             <CourseCard
               key={course._id}
+              courseId={course._id}
               courseName={course.title}
               mentorName={user.userName}
               skills={course.skills}

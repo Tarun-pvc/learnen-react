@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 // import img4 from "../assets/college project-amico.png"
 
 function CreateRoom() {
-  const user = useSelector((state) => state.wishList.user);
+  const user = JSON.parse(localStorage.getItem("loginUser"));
     const data=[img1,img2,img3];
     const random = Math.round(Math.random()* 2)
   const [formData, setFormData] = useState({
