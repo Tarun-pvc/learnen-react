@@ -15,7 +15,6 @@ const data = [
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; 
 
-import { useSelector } from "react-redux";
 
 function MdMiddle() {
   const user = JSON.parse(localStorage.getItem("loginUser"));
