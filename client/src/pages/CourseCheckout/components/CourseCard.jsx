@@ -1,60 +1,76 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
 
 import cart from "../assets/cart.png";
 import buy from "../assets/buy.png";
 import duration from "../assets/duration.png";
 import course from "../assets/course.png";
 import star from "../assets/star.png";
-import axios from "axios"
+import axios from "axios";
 
 export default function CourseCard() {
-  const [buying, setBuying] = useState(false); 
-  const user = JSON.parse(localStorage.getItem("loginuser"));
-  
+  const [buying, setBuying] = useState(false);
+  const user = JSON.parse(localStorage.getItem("loginUser"));
+  const room = JSON.parse(localStorage.getItem("courseCheckout"));
+
+  console.log("coursecheckout", room.cardData);
+  console.log("user", user);
 
   const handleBuyCourse = async () => {
     try {
-      const response = await axios.post("/buycourse", {
-        roomId: "YOUR_ROOM_ID",
-        userId: "YOUR_USER_ID",
-      });
-      
-      console.log(response.data.message); 
-      initPayment(response.data);
+      await axios
+        .post("http://localhost:3000/api/buycourse", {
+          roomId: room.cardData._id,
+          userId: user._id,
+        })
+        .then((result) => {
+          console.log("Result", result);
+        });
     } catch (error) {
       console.error("Error buying course:", error);
     }
   };
 
+  const handlePayment = async () => {
+    try {
+      console.log("Trying to initiate payment...");
+      const orderUrl = "http://localhost:3000/api/payment/orders";
+      const { data } = await axios.post(orderUrl, { amount: room.cardData.price});
+      console.log("Received order data:", data);
+      initPayment(data.data);
+      handleBuyCourse();
+    } catch (error) {
+      console.error("Error in handlePayment:", error);
+    }
+  };
+
   const initPayment = (data) => {
-		const options = {
-			key: "rzp_test_Gj1HHlsQFVyVat",
-			amount: data.amount,
-			currency: data.currency,
-			description: "Test Transaction",
-			order_id: data.id,
-			handler: async (response) => {
-				try {
-					const verifyUrl = "http://localhost:3000/api/payment/verify";
-					const { data } = await axios.post(verifyUrl, response);
-					console.log(data);
-				} catch (error) {
-					console.log(error);
-				}
-			},
-			theme: {
-				color: "#3399cc",
-			},
-		};
-		const rzp1 = new window.Razorpay(options);
-		rzp1.open();
-	};
+    const options = {
+      key: "rzp_test_shdYSDylDwL8ev",
+      amount: data.amount,
+      currency: data.currency,
+      description: "Test Transaction",
+      order_id: data.id,
+      handler: async (response) => {
+        try {
+          const verifyUrl = "http://localhost:3000/api/payment/verify";
+          const { data } = await axios.post(verifyUrl, response);
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  };
 
   return (
-    
     <div className="course-card-horizontal">
       <div className="course-details">
-        <h2 className="course-title">Google Project Management</h2>
+        <h2 className="course-title">{room.cardData.title}</h2>
         <p className="mentor-name">Mentor: John Doe</p>
         <div className="checkout-course-description">
           <p>
@@ -74,16 +90,19 @@ export default function CourseCard() {
             <p className="duration6">6 Months</p>
           </div>
           <div className="price">
-            <p>$99.99</p>
+            <p>{room.cardData.price} INR</p>
           </div>
           <div className="action-icons">
             <img className="cart" src={cart} alt="Add to Cart" />
-            <img className="buy" src={buy} alt="Buy"
-            onClick={() => {
-              setBuying(true); 
-              handleBuyCourse();
-            }}/>
-            
+            <img
+              className="buy"
+              src={buy}
+              alt="Buy"
+              onClick={() => {
+                setBuying(true);
+                handlePayment();
+              }}
+            />
           </div>
         </div>
       </div>
