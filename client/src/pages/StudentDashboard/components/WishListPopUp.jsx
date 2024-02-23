@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/WishListPopUp.css';
 import { useSelector , useDispatch } from 'react-redux';
 import { removeFromList } from '../../../features/wishListSlice';
 import {useNavigate} from 'react-router-dom';
@@ -24,7 +25,7 @@ export default function WishListPopUp() {
       {!wishList || wishList.length === 0 ? (
         <p>Your wishlist is empty.</p>
       ) : (
-        <ul>
+        <ul className='wishlist-items'>
           {wishList.map((item) => (
             <li key={item.id}>
               {item.name}

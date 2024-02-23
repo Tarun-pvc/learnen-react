@@ -8,11 +8,11 @@ import axios from "axios";
 
 export default function Explore() {
   const [explorecourses,setExplorecourses] = useState([]);
-  fetch("http://localhost:5000/api/course/getAllCourses")
+  fetch("http://localhost:3000/api/explorecourses")
   .then((res)=>res.json())
   .then((data)=>{
-    console.log(data)
-    setExplorecourses(data)
+    console.log(data.courses)
+    setExplorecourses(data.courses)
   })
   .catch((err)=>{
     console.log(err)
@@ -56,15 +56,7 @@ export default function Explore() {
         <h3>Most Popular</h3>
       </div>
       <div className="explore-cards-wrapper">
-        {cardData.map((card , index)=>(
-          <CourseCard cardData={card} key={index}/>
-        ))}
-      </div>
-      <div className="sd-explore-heading">
-        <h3>New on Learnen</h3>
-      </div>
-      <div className="explore-cards-wrapper">
-      {cardData.map((card , index)=>(
+        {explorecourses.map((card , index)=>(
           <CourseCard cardData={card} key={index}/>
         ))}
       </div>

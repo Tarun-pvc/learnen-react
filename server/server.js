@@ -11,6 +11,7 @@ const fs = require('fs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 var csrf = require('csurf');
+const paymentRoutes = require('./routes/payment')
 
 app.use(cors());
 app.use(compression());
@@ -78,6 +79,8 @@ app.get('/api/getCSRFToken',csrfProtection, (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
+app.use('/api/payment', paymentRoutes);
 
 
 app.listen(3000, () => {

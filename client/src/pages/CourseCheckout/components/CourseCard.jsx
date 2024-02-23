@@ -1,12 +1,54 @@
-import React from "react";
+import React , {useState} from "react";
 
 import cart from "../assets/cart.png";
 import buy from "../assets/buy.png";
 import duration from "../assets/duration.png";
 import course from "../assets/course.png";
 import star from "../assets/star.png";
+import axios from "axios"
 
 export default function CourseCard() {
+  const [buying, setBuying] = useState(false); 
+  const user = JSON.parse(localStorage.getItem("loginuser"));
+  
+
+  const handleBuyCourse = async () => {
+    try {
+      const response = await axios.post("/buycourse", {
+        roomId: "YOUR_ROOM_ID",
+        userId: "YOUR_USER_ID",
+      });
+      
+      console.log(response.data.message); 
+      initPayment(response.data);
+    } catch (error) {
+      console.error("Error buying course:", error);
+    }
+  };
+
+  const initPayment = (data) => {
+		const options = {
+			key: "rzp_test_Gj1HHlsQFVyVat",
+			amount: data.amount,
+			currency: data.currency,
+			description: "Test Transaction",
+			order_id: data.id,
+			handler: async (response) => {
+				try {
+					const verifyUrl = "http://localhost:3000/api/payment/verify";
+					const { data } = await axios.post(verifyUrl, response);
+					console.log(data);
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			theme: {
+				color: "#3399cc",
+			},
+		};
+		const rzp1 = new window.Razorpay(options);
+		rzp1.open();
+	};
 
   return (
     
@@ -36,7 +78,12 @@ export default function CourseCard() {
           </div>
           <div className="action-icons">
             <img className="cart" src={cart} alt="Add to Cart" />
-            <img className="buy" src={buy} alt="Buy"/>
+            <img className="buy" src={buy} alt="Buy"
+            onClick={() => {
+              setBuying(true); 
+              handleBuyCourse();
+            }}/>
+            
           </div>
         </div>
       </div>
