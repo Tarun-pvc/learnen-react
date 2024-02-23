@@ -69,6 +69,8 @@
   padding: 2vh;
   padding-left: 4vh;
   padding-bottom: 0;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 .md-MentorWelcome-wrapper {
   width: 57vw;
@@ -109,7 +111,7 @@
 }
 .md-CourseAnalytics-wrapper {
   width: 57vw;
-  height: 60vh;
+  height: 50vh;
   border-radius: 13px;
   background-color: #dbe2ef;
   margin-top: 3vh;
@@ -149,8 +151,7 @@
   width: 57vw;
   height: 51vh;
   margin-top: 3vh;
-  overflow: scroll;
-  overflow-x: hidden;
+  
 }
 
 .md-Middle-ScheduleHead {
@@ -220,17 +221,17 @@
 }
 
 .md-right-wrapper {
-  width: 21.9vw;
+  width: 21vw;
   height: 96vh;
   margin-top: 2vh;
   margin-bottom: 2vh;
-  margin-right: 2vh;
+  margin-right: 2.6vh;
   /* background-color: #c1d6ff; */
   float: right;
   border-radius: 13px;
 }
 .md-right-signout-wrapper {
-    width:100%;
+    width:22vw;
     height:12.5vh;
     background: #dbe2ef;
     border-radius: 13px;

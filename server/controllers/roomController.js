@@ -170,6 +170,27 @@ const getCreatedCourses = async (req, res,next) => {
     }
 }
 
+const getJoinedCourses = async (req, res,next) => {
+    console.log("Inside getCreatedCourses function");
+    const  userId  = req.body.userId;
+    console.log(userId);
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            res.status(404).json({ error: "User not found" });
+            return;
+        }
+        const userCourses = user.Joined_Room;
+        const courses = await Room.find({ _id: { $in: userCourses } });
+        console.log(courses)
+        res.status(200).json({ courses: courses });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Could not fetch courses" });
+        next(err);
+    }
+}
+
 module.exports = {
     adminRoomList,
     buyCourse,
@@ -177,5 +198,6 @@ module.exports = {
     getExploreCourses,
     addRoom,
     getCreatedCourses,
-    getCourse
+    getCourse,
+    getJoinedCourses
 };

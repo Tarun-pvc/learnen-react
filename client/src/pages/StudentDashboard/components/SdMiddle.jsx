@@ -19,7 +19,7 @@ const data = [
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; 
 
 export default function SdMiddle() {
-  const user = useSelector((state) => state.wishList.user);
+  const user = JSON.parse(localStorage.getItem('loginUser'));
   console.log(user)
   return (
     <div className="sd-Middle-wrapper">
@@ -50,7 +50,7 @@ export default function SdMiddle() {
           </div>
         </div>
         <div className="sd-CourseAnalytics-piechart">
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={290}>
         <PieChart>
           <Pie
             data={data}
