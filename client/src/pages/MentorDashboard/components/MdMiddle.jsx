@@ -15,9 +15,11 @@ const data = [
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; 
 
+import { useSelector } from "react-redux";
 
 function MdMiddle() {
-  const user = useSelector((state) => state.wishList.user);
+  const user = JSON.parse(localStorage.getItem("loginUser"));
+
   return (
     <div className="md-Middle-wrapper">
       <div className="md-MentorWelcome-wrapper">
@@ -43,7 +45,7 @@ function MdMiddle() {
         <div className="md-CourseAnalyticsHead-wrapper">Course Analytics</div>
         <div>
           <div className="md-CourseAnalyticsHead-wrapper-left">
-            Number of Courses : <b>50</b>
+            Number of Courses : <b>{user.Created_Room.length}</b>
           </div>
           <div className="md-CourseAnalyticsHead-wrapper-right">
             Number of Students : <b> 3740</b>
