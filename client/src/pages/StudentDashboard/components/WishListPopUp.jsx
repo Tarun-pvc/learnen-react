@@ -33,6 +33,7 @@ export default function WishListPopUp() {
                 <button onClick={() => handleDelete(item.name)}>X</button>
                 <button onClick={() => handleBuy()}>Buy</button>
               </div>
+              <hr></hr>
             </li>
           ))}
         </ul>

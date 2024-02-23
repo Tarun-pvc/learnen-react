@@ -1,7 +1,7 @@
 const express = require('express')
 const { registerUser, loginUser, logoutUser , updateUser,getUserDetails } = require('../controllers/userController')
 const { getDashboard } = require('../controllers/dashboard')
-const { adminRoomList, buyCourse, getCourses,getCourse, getExploreCourses , addRoom , getCreatedCourses } = require('../controllers/roomController')
+const { adminRoomList, buyCourse, getCourses,getCourse, getExploreCourses , addRoom , getCreatedCourses,getJoinedCourses } = require('../controllers/roomController')
 const {createAssignment, getAssignments} = require('../controllers/assignmentsController')
 const {createResource, getResources} = require('../controllers/resourceController')
 const multer = require('multer');
@@ -34,6 +34,7 @@ router.get('/explorecourses', getExploreCourses);
 router.post('/buycourse', buyCourse);
 router.post('/addroom', addRoom);
 router.post('/getcreatedcourses', getCreatedCourses);
+router.post('/getjoinedcourses', getJoinedCourses);
 router.post('/updateuser', upload.single("profileImage"), (req, res, next) => {
     req.fileName = req.file.filename;
     next();

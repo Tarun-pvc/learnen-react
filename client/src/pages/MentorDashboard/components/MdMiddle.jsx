@@ -50,7 +50,7 @@ function MdMiddle() {
             Number of Students : <b> 3740</b>
           </div>
         </div>
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <Pie
             data={data}
