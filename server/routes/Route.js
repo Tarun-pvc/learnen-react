@@ -1,7 +1,7 @@
 const express = require('express')
 const { registerUser, loginUser, logoutUser , updateUser } = require('../controllers/userController')
 const { getDashboard } = require('../controllers/dashboard')
-const { adminRoomList, buyCourse, getCourses, getExploreCourses , addRoom , getCreatedCourses } = require('../controllers/roomController')
+const { adminRoomList, buyCourse, getCourses,getCourse, getExploreCourses , addRoom , getCreatedCourses } = require('../controllers/roomController')
 const {createAssignment, getAssignments} = require('../controllers/assignmentsController')
 const {createResource, getResources} = require('../controllers/resourceController')
 const multer = require('multer');
@@ -29,6 +29,7 @@ router.post("/login", loginUser);
 router.get("/logout", logoutUser);
 router.get('/dashboard', getDashboard);
 router.get('/usercourses', getCourses);
+router.get('/getCourse', getCourse);
 router.get('/explorecourses', getExploreCourses);
 router.post('/buycourse', buyCourse);
 router.post('/addroom', addRoom);

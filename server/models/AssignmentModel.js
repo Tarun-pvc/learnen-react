@@ -4,7 +4,7 @@ const AssignmentModel = new mongoose.Schema({
     title: {
         type:String
     },
-    description:{
+    deadline:{
         type:String
     },
     link:{

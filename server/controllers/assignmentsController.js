@@ -2,11 +2,11 @@ const Assignment = require('../models/AssignmentModel');
 
 const createAssignment = async (req, res, next) => {
     console.log("Inside createAssignment function");
-    const { title, description, link } = req.body;
+    const { title, deadline, link } = req.body;
     try {
         const assignment = new Assignment({
             title,
-            description,
+            deadline,
             link
         });
         await assignment.save();
@@ -34,3 +34,13 @@ module.exports = {
     createAssignment,
     getAssignments
 }
+
+// .cr-assignment-assigned-item {
+//     margin-top: 3vh;
+//     background-color: #112D4E;
+//     width: 90%;
+//     border-radius: 5px;
+//     margin-left: 1rem;
+//     border-top-right-radius: 10px;
+//     border-bottom-right-radius: 10px;
+// }

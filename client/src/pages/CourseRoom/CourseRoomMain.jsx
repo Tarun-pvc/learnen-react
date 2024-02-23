@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import document from "./assets/document.png";
 import assignment from "./assets/assignment.png";
 import "./styles/courseRoomMain.css";
@@ -9,13 +9,39 @@ import MusicPlayerCard from "./components/musicPlayerCard";
 import CourseRoomDocuments from "./components/courseRoomDocuments";
 import CourseRoomSchedules from "./components/courseRoomSchedules";
 import CourseRoomParticipants from "./components/courseRoomParticipants";
-import Schoolboy from './assets/Raise a Hand to Answer.png'
+import Schoolboy from "./assets/Raise a Hand to Answer.png";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 export default function CourseRoomMain() {
-  const user = useSelector((state) => state.wishList.user);
+  const [courseId, setCourseId] = useState();
+  const [course, setCourse] = useState();
+  const user = JSON.parse(localStorage.getItem("loginUser"));
   const staticRating = 3;
   const [selectedItem, setSelectedItem] = useState("Assignments");
+
+  const location = useLocation();
+  const courseId1 = JSON.parse(localStorage.getItem("selectedCourseId"));
+  const userid = JSON.parse(localStorage.getItem("loginUser"));
+
+  useEffect(() => {
+    async function fetchCourses() {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/getCourse?courseId=${courseId1}`
+        );
+        console.log("response",response);
+        setCourse(response.data.course);
+        console.log("asfafs",course);
+      } catch {
+        console.error("Error fetching data");
+      }
+    }
+
+    fetchCourses();
+  }, []);
+
   const renderSelectedComponent = () => {
     switch (selectedItem) {
       case "Assignments":
@@ -25,7 +51,7 @@ export default function CourseRoomMain() {
       case "Schedules":
         return <CourseRoomSchedules />;
       case "Participants":
-        return <CourseRoomParticipants/>
+        return <CourseRoomParticipants course={course}/>;
       default:
         return <CourseRoomAssignments />;
     }
@@ -42,7 +68,7 @@ export default function CourseRoomMain() {
             <p>{user.email}</p>
           </div>
         </div>
-        <h2>Python</h2>
+        <h2>{course ? course.title : ""}</h2>
         <div
           className="cr-sidebar-item"
           onClick={() => setSelectedItem("Assignments")}
@@ -93,10 +119,10 @@ export default function CourseRoomMain() {
           <div className="cr-main-top-left">
             <div className="cr-main-top-content">
               <p className="cr-main-top-content-course">
-                Google Project Management
+                {course ? course.title : ""}
               </p>
               <p className="cr-main-top-content-mentor">
-                Mentor: Chandra Sai Teja
+                Mentor: {user.userName}
               </p>
               <p className="cr-main-top-content-skills">
                 Skills: Html, CSS, Bootstrap, JavaScript
