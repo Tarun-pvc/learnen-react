@@ -1,4 +1,4 @@
-```import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import userIcon from "../assets/user.png";
 import axios from "axios";
 function UpdateMP() {
@@ -262,4 +262,3 @@ function UpdateMP() {
 }
 
 export default UpdateMP;
-```
