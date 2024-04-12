@@ -1,0 +1,195 @@
+.cr-assignments-main {
+    width: 100%;
+    height: 50vh;
+    overflow-y: scroll;
+    background-color: #DBE2EF;
+    margin: 0 auto;
+    margin-top: 3rem;
+    /* box-shadow: 0 0 4px #787878; */
+    border-radius: 10px;
+    /* border: 1px solid; */
+    padding: 1rem;
+}
+
+.cr-assignments-main>h1 {
+    margin: 0;
+    font-weight: 700;
+}
+
+.cr-assignments-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.cr-assignments-assigned-list-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cr-assignment-assigned-item {
+    margin-top: 3vh;
+    background-color: #112D4E;
+    width: 90%;
+    border-radius: 5px;
+    margin-left: 1rem;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.cr-assignment-assigned-item-content {
+    background-color: white;
+    width: calc(100%-1%);
+    margin-left: 1%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+}
+
+.cr-assignments-new-left {
+    width: 58vw;
+    /* overflow: scroll; */
+    overflow-x: hidden;
+}
+
+.cr-assignments-new-left-head {
+    font-size: 3.5vh;
+    font-weight: 600;
+    margin-bottom: 2.2vh;
+}
+
+.cr-assignments-new {
+    width: 92%;
+    height: 10vh;
+    background-color: #DBE2EF;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    border-radius: 7px;
+    padding-right: 3vw;
+    padding-left: 3vw;
+    margin-left: -2vw;
+}
+
+.cr-assignments-new-left {
+    width: 50%;
+    float: left;
+}
+
+.cr-assignments-new-right {
+    padding-top: 1.2vh;
+    width: 50%;
+    float: left;
+}
+
+.cr-assignments-new-left-name {
+    font-size: 2.8vh;
+    font-weight: 500;
+}
+
+.cr-assignments-new-left-lecture {
+    font-size: 2.1vh;
+}
+
+.cr-assignments-new-right-time {
+    /* font-size: 2.3vh; */
+    float: right;
+    margin-top: 0%;
+}
+
+.cr-assignments-new-right-view {
+    float: right;
+    text-decoration-line: none;
+    font-size: 2.1vh;
+    color: blue;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Adjust the opacity as needed */
+    z-index: 999;
+    /* Ensure the overlay appears behind the popup */
+}
+
+/* Style for the assignment popup */
+.assignment-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    padding-right: 35px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.assignment-popup h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.assignment-popup-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.assignment-popup-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.assignment-popup-buttons button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.assignment-popup-buttons button:first-child {
+    background-color: #ccc;
+}
+
+.assignment-popup-buttons button:last-child {
+    background-color: #007bff;
+    color: white;
+}
+
+.cr-add-assignment-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cr-add-assignment-button:hover {
+    background-color: #0056b3;
+}
+
+.cr-assignments-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.cr-assignments-header>h1 {
+    margin: 0;
+}

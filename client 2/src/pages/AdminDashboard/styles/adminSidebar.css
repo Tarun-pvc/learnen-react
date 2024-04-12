@@ -1,0 +1,66 @@
+.admin-sidebar-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 4px #787878;
+    padding-top: 1rem;
+    background-color: #393E46;
+}
+
+.admin-general-section{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.admin-general-section-name{
+    color: #EEEEEE;
+    margin: 1.2vh;
+    font-size: 2.5vh;
+}
+
+
+.admin-general-section-name-h2{
+    color: #00ADB5;
+}
+.admin-sidebar-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    background-color: #EEEEEE;
+}
+
+.admin-general-child{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.admin-general-section-list{
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.admin-general-child-logo-wrapper{
+    width: 1.3rem;
+}
+.admin-general-child-logo-wrapper>img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.admin-sidebar-fontawesome-icon{
+    font-size: 19px;
+}
+
+#active{
+    color: pink;
+    font-weight:bolder;
+}

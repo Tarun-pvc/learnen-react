@@ -1,0 +1,103 @@
+.admin-course-card-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
+    height: 23rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+    border-radius: 30px;
+}
+
+.admin-course-card-img-wrapper{
+    width: 100%;
+    height: 10rem;
+    border: solid 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+}
+
+.admin-course-card-img-wrapper>img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.admin-course-card-details-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.admin-course-mentor {
+    margin: 0;
+    font-size: 14px;
+    color: #787878;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+
+.admin-course-count-details{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.admin-course-stars-wrapper,.admin-course-users-wrapper,.admin-course-reports-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.admin-course-card-buttons-wrapper {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+button.admin-course-delete-button,
+button.admin-course-flag-button {
+  background-color: #e44d4d;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+button.admin-course-flag-button {
+    background-color: #ffae42;
+  }
+  
+  /* button:hover {
+    background-color: #c13131;
+  } */
+  
+  button.admin-course-flag-button:hover {
+    background-color: #e69536;
+  }
+
+.admin-course-mentor{
+    margin: 0;
+    font-size: 16px;
+    color: #787878;
+    margin-left: 1rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.admin-course-title{
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 600;
+}

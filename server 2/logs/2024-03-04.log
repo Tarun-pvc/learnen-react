@@ -1,0 +1,16 @@
+GET / 404 139 - 9.181 ms
+GET / 404 139 - 1.872 ms
+POST /api/login 201 511 - 2477.811 ms
+POST /api/getSchedule 200 317 - 2369.344 ms
+POST /api/getSchedule 200 317 - 3394.556 ms
+POST /api/getcreatedcourses/ 200 - - 1349.404 ms
+POST /api/getcreatedcourses/ 200 - - 1357.545 ms
+GET /api/getCourse?courseId=65700f59c64290ce8de72138 304 - - 536.481 ms
+POST /api/getcourseassignments 200 122 - 1029.049 ms
+POST /api/getcourseassignments 200 122 - 1057.349 ms
+GET /api/getCourse?courseId=65700f59c64290ce8de72138 304 - - 515.978 ms
+POST /api/getresources 200 118 - 1100.429 ms
+POST /api/getresources 200 118 - 1107.364 ms
+POST /api/getSchedule 200 317 - 1809.399 ms
+POST /api/getSchedule - - - - ms
+GET / 404 139 - 2.263 ms

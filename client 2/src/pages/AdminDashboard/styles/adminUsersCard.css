@@ -1,0 +1,39 @@
+/* UserCard.css */
+.user-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 100px;
+    margin-left: 10px;
+    margin-right:10px;
+  }
+  
+  .user-icon {
+    font-size: 24px;
+    padding:10px;
+    margin-right: 10px;
+  }
+  
+  .user-info {
+    flex-grow: 1;
+  }
+  
+  .user-name {
+    font-size: 16px;
+    font-weight: bolder;
+    margin: 0;
+  }
+  
+  .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .mentor .user-card{
+    background-color: rgb(105, 148, 221);
+  }
+
+  .student .user-card{
+    background-color: #5fd465;
+  }

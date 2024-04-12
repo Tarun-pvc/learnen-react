@@ -1,0 +1,11 @@
+POST /api/login 201 450 - 657.312 ms
+GET /api/dashboard 201 - - 1.655 ms
+GET /api/dashboard 201 - - 0.966 ms
+GET /api/logout 304 - - 0.959 ms
+POST /api/login 201 619 - 641.016 ms
+POST /api/addRoom 200 37 - 833.016 ms
+POST /api/getcreatedcourses/ 200 - - 526.075 ms
+POST /api/getcreatedcourses/ 200 - - 538.922 ms
+POST /api/login 201 646 - 1789.953 ms
+POST /api/getcreatedcourses/ 200 - - 490.666 ms
+POST /api/getcreatedcourses/ 200 - - 1912.099 ms

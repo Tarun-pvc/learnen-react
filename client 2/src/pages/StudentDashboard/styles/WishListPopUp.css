@@ -1,0 +1,24 @@
+.wishlist-popup {
+    background-color: #d5e3f3;
+    border-radius: 10px;
+    width: 100%;
+    height: 40%;
+}
+
+.cart-buttons-container{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.cart-buttons-container button{
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: #d5e3f3;
+}
+
+.cart-buttons-container button:hover{
+    background-color: #c5d3e3;
+}

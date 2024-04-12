@@ -1,0 +1,82 @@
+/* Contact.css */
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    gap: 10px;
+  }
+  
+  .form-container {
+    flex: 0.75;
+    background-color: #112D4E;
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 5rem;
+    margin-bottom: 5rem;
+  }
+  
+  .section-subtext {
+    color: #fff;
+  }
+  
+  .section-headtext {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 12px;
+  }
+  
+  .form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-label {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .label-text {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .input-field,
+  .textarea-field {
+    background-color: #fff;
+    padding: 14px 18px;
+    color: #000;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+  }
+  
+  .textarea-field {
+    resize: none;
+  }
+  
+  .submit-button {
+    background-color: #fff;
+    padding: 12px 24px;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .submit-button:disabled {
+    background-color: #fff;
+    cursor: not-allowed;
+  }
+  
+  .earth-container {
+    flex: 1;
+    height: auto;
+  }
+  
