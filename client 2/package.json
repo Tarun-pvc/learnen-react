@@ -25,6 +25,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.1",
     "react-router-dom": "^6.18.0",
+    "react-toastify": "^10.0.5",
     "recharts": "^2.10.3",
     "vite": "^4.5.0"
   },

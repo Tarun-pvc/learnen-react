@@ -46,6 +46,7 @@ export default function StudentDashboard() {
     .then((data) => {
       console.log(data);
       dispatch(addUser(data));
+      console.log("Adding")
     })
     .catch((err) => {
       console.log(err);
@@ -59,6 +60,7 @@ export default function StudentDashboard() {
       <div className="student-dashboard-wrapper">
         {renderSelectedComponent()}
       </div>
+
     </div>
   );
 }

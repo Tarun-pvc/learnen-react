@@ -16,28 +16,28 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 export default function SdMiddle() {
   const [schedules, setSchedules] = useState([]);
-  const user = JSON.parse(localStorage.getItem("loginUser"));
   const [assignmentslen, setAssignments] = useState([]);
+  const user = JSON.parse(localStorage.getItem("loginUser"));
 
   const fetchAssignments = () => {
-    const user = JSON.parse(localStorage.getItem("loginUser"));
-      fetch("http://localhost:3000/api/getAssignmentsJoined",{
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          joinedRooms: user.Joined_Room,
-        }),
+    fetch("http://localhost:3000/api/getAssignmentsJoined", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        joinedRooms: user.Joined_Room,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAssignments(data.assignments.length);
       })
-        .then((res) => res.json())
-        .then((data) => {
-          setAssignments(data.assignments.length);
-        })
-        .catch((err) => {
-          console.error("Error fetching assignments:", err);
-        });
-    };
+      .catch((err) => {
+        console.error("Error fetching assignments:", err);
+      });
+  };
+
   useEffect(() => {
     if (user) {
       fetch("http://localhost:3000/api/getSchedule", {
@@ -52,7 +52,7 @@ export default function SdMiddle() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("backendSchedules",data.schedules)
+          console.log("backendSchedules", data.schedules)
           setSchedules(data.schedules);
           fetchAssignments();
         })

@@ -10,6 +10,8 @@ import SignUpImage from "./assets/3236196-removebg-preview.png";
 import firebase from "firebase/compat/app"
 import 'firebase/compat/auth';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function SignUp() {
@@ -94,30 +96,34 @@ function SignUp() {
     console.log("OTP Sent")
     
   }
-
-  const sendPhoneOTP = () => {
-    const otpphone = `+91${userData.phonenumber}`;
-    console.log(otpphone);
-
-    const appVerifier = new firebase.auth.RecaptchaVerifier("reCAPTCHA", {
-      'size': "invisible",
-      'callback': (response) => {},
-      'expired-callback': () => {
-      },
-      defaultCountry: "IN",
-    });
-
-    firebase
-      .auth()
-      .signInWithPhoneNumber(otpphone, appVerifier)
-      .then((confirmationResult) => {
-        window.confirmationResult = confirmationResult;
-        navigate("/verification", { state: { userData, phoneNumber } });
-      })
-      .catch((error) => {
-        console.error("Error sending OTP:", error);
+  
+  const sendPhoneOTP = async () => {
+      const otpphone = `+91${userData.phonenumber}`;
+      console.log(otpphone);
+  
+      const appVerifier = new firebase.auth.RecaptchaVerifier("reCAPTCHA", {
+          'size': "invisible",
+          'callback': (response) => {},
+          'expired-callback': () => {
+          },
+          defaultCountry: "IN",
       });
+  
+      try {
+          const confirmationResult = await firebase
+              .auth()
+              .signInWithPhoneNumber(otpphone, appVerifier);
+  
+          window.confirmationResult = confirmationResult;
+          toast.success("Phone OTP sent successfully!");
+          await new Promise((resolve) => setTimeout(resolve, 2000)); 
+          navigate("/verification", { state: { userData, phoneNumber } });
+      } catch (error) {
+          console.error("Error sending OTP:", error);
+          toast.error("Error sending OTP. Please try again later.");
+      }
   };
+  
   
 
   return (
@@ -330,6 +336,7 @@ function SignUp() {
             </div>
           </div>
         </div>
+        <ToastContainer position="top-right"/>
       </div>
     </React.Fragment>
   );

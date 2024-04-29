@@ -4,7 +4,6 @@ import Welcome from "../assets/Screenshot_2023-11-06_113903-removebg-preview.png
 import { useSelector } from "react-redux";
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
-
 const data = [
   { name: 'Python', value: 400 },
   { name: 'Java', value: 300 },

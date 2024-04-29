@@ -1,21 +1,22 @@
 import React, { useState } from "react";
-import img1 from "../assets/college project-pana.png"
-import img2 from "../assets/college project-bro.png"
-import img3 from "../assets/college project-rafiki.png"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import img1 from "../assets/college project-pana.png";
+import img2 from "../assets/college project-bro.png";
+import img3 from "../assets/college project-rafiki.png";
 import { useSelector } from "react-redux";
-// import img4 from "../assets/college project-amico.png"
 
 function CreateRoom() {
   const user = JSON.parse(localStorage.getItem("loginUser"));
-    const data=[img1,img2,img3];
-    const random = Math.round(Math.random()* 2)
+  const data = [img1, img2, img3];
+  const random = Math.round(Math.random() * 2);
   const [formData, setFormData] = useState({
     roomTitle: "",
     price: "",
     meetLink: "",
     skills: "",
     description: "",
-    userId: user._id
+    userId: user._id,
   });
 
   const handleInputChange = (e) => {
@@ -39,6 +40,17 @@ function CreateRoom() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        // Show success toast
+        toast.success("Room created successfully!");
+        // Reset form data
+        setFormData({
+          roomTitle: "",
+          price: "",
+          meetLink: "",
+          skills: "",
+          description: "",
+          userId: user._id,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -50,7 +62,11 @@ function CreateRoom() {
     <>
       <div className="createroom-wrapper">
         <div className="createroom-top">
-          <img className="createroom-top-img" src={data[random]} alt="Project Image" />
+          <img
+            className="createroom-top-img"
+            src={data[random]}
+            alt="Project Image"
+          />
         </div>
         <div className="createroom-bottom-wrapper">
           <div className="createroom-bottom">
@@ -112,6 +128,7 @@ function CreateRoom() {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-right" />
     </>
   );
 }

@@ -1,6 +1,9 @@
 import React, { useState , useEffect } from "react";
 import userIcon from "../assets/user.png";
 import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function UpdateMP() {
   const [userData, setUserData] = useState({
     userName: "",
@@ -46,8 +49,10 @@ function UpdateMP() {
         }
       );
       console.log("User data updated successfully:", response.data);
+      toast.success('User data updated successfully');
     } catch (error) {
       console.error("Error updating user data:", error);
+      toast.error('Error updating user data');
     }
   }
 
@@ -58,6 +63,7 @@ function UpdateMP() {
   function handleImageChange(event) {
     setUserData({ ...userData, profileImage: event.target.files[0] });
   }
+  
   return (
     <>
       <div className="updateMP-wrapper">
@@ -176,7 +182,7 @@ function UpdateMP() {
                   type="url"
                   className="updateMP-input1"
                   placeholder="LinkedIn"
-                  value={userData.Linkedin}
+                  value={userData.LinkedIn}
                   onChange={(event) => handleChange(event, "LinkedIn")}
                 ></input>
               </div>

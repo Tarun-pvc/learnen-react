@@ -5,38 +5,44 @@ import LoginImage from "./assets/Mobile-login-Cristina-removebg.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../features/wishListSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const HandleLoginSubmit = (event) => {
+  const HandleLoginSubmit = async (event) => {
     event.preventDefault();
-    axios.post("http://localhost:3000/api/login", {
-      email: email,
-      password: password,
-    })
-    .then((result)=>{
+    try {
+      const result = await axios.post("http://localhost:3000/api/login", {
+        email: email,
+        password: password,
+      });
       console.log(result);
-      localStorage.setItem("loginUser",JSON.stringify(result.data));
+      localStorage.setItem("loginUser", JSON.stringify(result.data));
       dispatch(addUser(result.data));
-      if(result.data.Position==="student")
-      {
+      toast.success("Login successful!");
+  
+      // Wait for 2 seconds
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+  
+      if (result.data.Position === "student") {
         navigate('/studentDashboard');
-      }
-      else if(result.data.Position==="mentor"){
+      } else if (result.data.Position === "mentor") {
         navigate('/mentorDashboard');
-      }
-      else if(result.data.Position==="admin"){
+      } else if (result.data.Position === "admin") {
         navigate('/adminDashboard');
       }
-    })
-    .catch((err)=>{
+    } catch (err) {
       console.error(err);
+      toast.error("Login failed. Please try again.");
       navigate("/login");
-    })
+    }
   };
+  
   return (
     <div className="body1 center">
       <div className="innerBody center">
@@ -129,6 +135,7 @@ function LoginPage() {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-right" />
     </div>
   );
 }

@@ -6,6 +6,8 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import 'firebase/compat/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function VerificationPage() {
   const firebaseConfig = {
@@ -57,30 +59,31 @@ function VerificationPage() {
     }
   };
 
-  const userCreate = () => {
+  const userCreate = async () => {
     const signupname = userData.signupname;
     const signupemail = userData.signupemail;
     const signuppass = userData.signuppass;
     const phonenumber = userData.phonenumber;
     const securityquestion = userData.securityquestion;
     const securityanswer = userData.securityanswer  ;
-    axios
-      .post("http://localhost:3000/api/signup", {
-        signupname,
-        signupemail,
-        signuppass,
-        phonenumber,
-        securityquestion,
-        securityanswer,
-      })
-      .then((result) => {
-        console.log(result);
-        navigate("/login");
-      })
-      .catch((err) => {
-        console.error(err);
-        navigate("/signup");
+    try {
+      await axios.post("http://localhost:3000/api/signup", {
+          signupname,
+          signupemail,
+          signuppass,
+          phonenumber,
+          securityquestion,
+          securityanswer,
       });
+
+      toast.success("Account created successfully!");
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for 2 seconds
+      navigate("/login");
+  } catch (err) {
+      console.error(err);
+      toast.error("Error creating account. Please try again later.");
+      navigate("/signup");
+  }
   };
 
   return (
@@ -122,6 +125,7 @@ function VerificationPage() {
             </div>
           </div>
         </div>
+        <ToastContainer position="top-right"/>
       </div>
     </React.Fragment>
   );

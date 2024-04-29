@@ -31,6 +31,7 @@ const adminRoomList = async (req, res , next) => {
 const buyCourse = async (req, res,next) => {
     const userId = req.body.userId;
     const roomId = req.body.roomId;
+    console.log("Buying course")
     try {
         const room = await Room.findById(roomId);
         const user = await User.findById(userId);

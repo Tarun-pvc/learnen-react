@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import userIcon from "../assets/user.png";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function UpdateMP() {
   const [userData, setUserData] = useState({
     userName: "",
@@ -11,22 +14,6 @@ function UpdateMP() {
     portfolio: "",
     profileImage: "",
   });
-  // const data = {
-  //   firstName: "ram",
-  //   lastname: "sita",
-  //   Email: "Ram@gmail.com",
-  //   bio: "my name is ram, i am from ayodhya",
-  //   acQua: "bTech",
-  //   LinkedIn: "https://www.w3schools.com/",
-  //   portfolio: "https://www.w3schools.com/",
-  // };
-  // const [fn, setFirstName] = useState(data.firstName);
-  // const [ln, setlastName] = useState(data.lastname);
-  // const [em, setEmail] = useState(data.Email);
-  // const [bi, setBio] = useState(data.bio);
-  // const [aq, setAq] = useState(data.acQua);
-  // const [li, setLinkedIn] = useState(data.LinkedIn);
-  // const [pt, setPortfolio] = useState(data.portfolio);
 
   const [defaultTrue, setDefaultTrue] = useState(false);
   const user = JSON.parse(localStorage.getItem("loginUser"));
@@ -62,8 +49,22 @@ function UpdateMP() {
         }
       );
       console.log("User data updated successfully:", response.data);
+      // Reset form fields to empty values
+      setUserData({
+        userName: "",
+        phoneNumber: "",
+        bio: "",
+        academicQualifications: "",
+        Linkedin: "",
+        portfolio: "",
+        profileImage: "",
+      });
+      // Show success toast
+      toast.success("User data updated successfully!");
     } catch (error) {
       console.error("Error updating user data:", error);
+      // Show error toast
+      toast.error("Error updating user data");
     }
   }
 
@@ -75,36 +76,6 @@ function UpdateMP() {
     setUserData({ ...userData, profileImage: event.target.files[0] });
   }
 
-  // function firstNameHandler(event) {
-  //   setFirstName(event.target.value);
-  // }
-  // function lastNameHandler(event) {
-  //   setlastName(event.target.value);
-  // }
-  // function emailHandler(event) {
-  //   setEmail(event.target.value);
-  // }
-  // function bioHandler(event) {
-  //   setBio(event.target.value);
-  // }
-  // function aqHandler(event) {
-  //   setAq(event.target.value);
-  // }
-  // function linkedInHandler(event) {
-  //   setLinkedIn(event.target.value);
-  // }
-  // function portfolioHandler(event) {
-  //   setPortfolio(event.target.value);
-  // }
-  // function submitHandler() {
-  //   console.log(fn);
-  //   console.log(ln);
-  //   console.log(em);
-  //   console.log(bi);
-  //   console.log(aq);
-  //   console.log(li);
-  //   console.log(pt);
-  // }
   return (
     <>
       <div className="updateMP-wrapper">
@@ -151,22 +122,20 @@ function UpdateMP() {
                   type="text"
                   className="updateMP-input1"
                   placeholder="First Name"
-                  value={
-                    userData.userName ? userData.userName.split("  ")[0] : ""
-                  }
-                  onChange={(event) => handleChange(event, "firstName")}
+                  value={userData.userName.split(" ")[0] || ""}
+                  onChange={(event) => handleChange(event, "userName")}
                 />
               </div>
               <div className="updateMP-input-wrapper">
                 <label>Phone Number</label>
                 <br></br>
                 <input
-                  type="email"
+                  type="tel"
                   className="updateMP-input1"
                   placeholder="Phone Number"
-                  value={userData.phoneNumber}
-                  onChange={(event) => handleChange(event, "phone")}
-                ></input>
+                  value={userData.phoneNumber || ""}
+                  onChange={(event) => handleChange(event, "phoneNumber")}
+                />
               </div>
               <div className="updateMP-input-wrapper">
                 <label>Date of Birth</label>
@@ -175,11 +144,7 @@ function UpdateMP() {
                   type="date"
                   className="updateMP-input-date"
                   placeholder="Date of Birth"
-                  value={
-                    userData.dateOfBirth
-                      ? userData.dateOfBirth.split("T")[0]
-                      : ""
-                  }
+                  value={userData.dateOfBirth ? userData.dateOfBirth.split("T")[0] : ""}
                   onChange={(event) => handleChange(event, "dateOfBirth")}
                 />
               </div>
@@ -189,7 +154,7 @@ function UpdateMP() {
                 <textarea
                   className="updateMP-input-bio"
                   placeholder="Bio"
-                  value={userData.bio}
+                  value={userData.bio || ""}
                   onChange={(event) => handleChange(event, "bio")}
                 ></textarea>
               </div>
@@ -204,10 +169,8 @@ function UpdateMP() {
                   type="text"
                   className="updateMP-input1"
                   placeholder="Last Name"
-                  value={
-                    userData.userName ? userData.userName.split("  ")[1] : ""
-                  }
-                  onChange={(event) => handleChange(event, "lastName")}
+                  value={userData.userName.split(" ")[1] || ""}
+                  onChange={(event) => handleChange(event, "userName")}
                 ></input>
               </div>
               <div className="updateMP-input-wrapper">
@@ -217,10 +180,8 @@ function UpdateMP() {
                   type="text"
                   className="updateMP-input"
                   placeholder="Academic Qualifications"
-                  value={userData.academicQualifications}
-                  onChange={(event) =>
-                    handleChange(event, "academicQualifications")
-                  }
+                  value={userData.academicQualifications || ""}
+                  onChange={(event) => handleChange(event, "academicQualifications")}
                 ></input>
               </div>
               <p className="updateMP-socials">
@@ -233,8 +194,8 @@ function UpdateMP() {
                   type="url"
                   className="updateMP-input1"
                   placeholder="LinkedIn"
-                  value={userData.Linkedin}
-                  onChange={(event) => handleChange(event, "LinkedIn")}
+                  value={userData.Linkedin || ""}
+                  onChange={(event) => handleChange(event, "Linkedin")}
                 ></input>
               </div>
               <div className="updateMP-input-wrapper">
@@ -244,7 +205,7 @@ function UpdateMP() {
                   type="url"
                   className="updateMP-input"
                   placeholder="Portfolio"
-                  value={userData.Portfolio}
+                  value={userData.portfolio || ""}
                   onChange={(event) => handleChange(event, "portfolio")}
                 ></input>
               </div>
@@ -257,6 +218,7 @@ function UpdateMP() {
           </button>
         </div>
       </div>
+      <ToastContainer position="top-right" />
     </>
   );
 }

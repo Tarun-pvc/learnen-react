@@ -6,6 +6,8 @@ import duration from "../assets/duration.png";
 import course from "../assets/course.png";
 import star from "../assets/star.png";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CourseCard() {
   const [buying, setBuying] = useState(false);
@@ -24,6 +26,8 @@ export default function CourseCard() {
         })
         .then((result) => {
           console.log("Result", result);
+          // toast.success("Course bought successfully!");
+
         });
     } catch (error) {
       console.error("Error buying course:", error);
@@ -38,6 +42,7 @@ export default function CourseCard() {
       console.log("Received order data:", data);
       initPayment(data.data);
       handleBuyCourse();
+
     } catch (error) {
       console.error("Error in handlePayment:", error);
     }
@@ -55,6 +60,7 @@ export default function CourseCard() {
           const verifyUrl = "http://localhost:3000/api/payment/verify";
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
+          
         } catch (error) {
           console.log(error);
         }
@@ -109,6 +115,7 @@ export default function CourseCard() {
       <div className="course-image">
         <img src={course} alt="Course Image" />
       </div>
+      <ToastContainer position="top-right" />
     </div>
   );
 }
