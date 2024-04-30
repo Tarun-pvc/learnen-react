@@ -9,6 +9,8 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install --production
 
+RUN npm install bcrypt --build-from-source
+
 # Copy the entire client directory
 COPY . .
 
