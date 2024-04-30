@@ -24,7 +24,8 @@ services:
       - node-network
 
 volumes:
-  dbdata6:
+  - dbdata6:
+  - ./server/node_modules
 
 networks:
   node-network:
