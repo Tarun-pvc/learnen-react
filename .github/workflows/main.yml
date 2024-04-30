@@ -27,6 +27,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           
       - working-directory: server
+        name: Install bcrypt dependency
+        run: npm install bcrypt --build-from-source
+        
+      - working-directory: server
         name: NPM install, build and test
         run: |
           npm install
