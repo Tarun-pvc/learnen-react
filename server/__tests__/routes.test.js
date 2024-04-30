@@ -1,7 +1,6 @@
 const request = require('supertest');
 const express = require('express');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 const session = require('express-session');
 const User = require('../models/UserModel');
 const Room = require('../models/RoomModel');
