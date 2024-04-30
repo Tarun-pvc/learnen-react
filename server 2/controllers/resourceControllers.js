@@ -11,7 +11,6 @@ const addResource=async(req,res,next)=>{
             description,
             link
         })
-        console.log("frontend",resource);
         const room = await Room.findById(courseId);
         if(!room){
             return res.status(404).json({ error: "Room not found" });

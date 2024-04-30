@@ -26,7 +26,7 @@ const RoomModel = new mongoose.Schema({
         type:String
     },
     skills:{
-        type:String
+        type:[String]
     },
     stars:{
         type:String,

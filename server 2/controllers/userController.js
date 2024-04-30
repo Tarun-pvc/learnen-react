@@ -75,7 +75,6 @@ const loginUser = async (req, res, next) => {
 
 const logoutUser = async (req, res, next) => {
     req.session.destroy((err) => {
-        console.log(err)
         res.json({
             message: "Logged out successfully"
         })
@@ -145,7 +144,7 @@ const getParticipantsByCourse = async (req, res, next) => {
             return;
         }
         const participants = await User.find({ _id: { $in: room.participants } });
-        // console.log("backendparticipants", participants);
+        console.log("backendparticipants", participants);
         res.status(200).json(participants);
     } catch (err) {
         console.log(err);
