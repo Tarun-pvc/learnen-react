@@ -2,7 +2,7 @@ name: Learnen CI/CD
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 
 jobs:
