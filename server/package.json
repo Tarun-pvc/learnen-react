@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "jest --reporters=default --reporters=jest-html-reporter",
-    "redis": "redis-server /usr/local/etc/redis.conf"
+    "redis": "redis-server /usr/local/etc/redis.conf",
+    "test": "npm run redis && jest --reporters=default --reporters=jest-html-reporter"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
