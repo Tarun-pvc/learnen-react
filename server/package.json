@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "npm run wait-for-redis && jest --reporters=default --reporters=jest-html-reporter",
-    "wait-for-redis": "wait-on tcp:localhost:6379"
+    "test": "jest --reporters=default --reporters=jest-html-reporter"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
