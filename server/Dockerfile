@@ -1,6 +1,9 @@
 # Base image for React development with a small footprint
 FROM node:20-alpine AS build
 
+# Install Redis
+RUN apt-get update && apt-get install -y redis-server
+
 WORKDIR /app
 
 # Copy package.json and package-lock.json
