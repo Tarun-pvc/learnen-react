@@ -53,6 +53,8 @@ function AdminGeneral() {
       });
   }, []);
 
+  console.log(roomData);
+
   const topRooms = roomData
     .map((room) => ({
       ...room,

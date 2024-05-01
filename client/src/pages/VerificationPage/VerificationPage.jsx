@@ -11,13 +11,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function VerificationPage() {
   const firebaseConfig = {
-    apiKey: "AIzaSyDqf7o8A9gNzqnorMKFPTpJQIApBHy_BV4",
-    authDomain: "learnen-4281f.firebaseapp.com",
-    projectId: "learnen-4281f",
-    storageBucket: "learnen-4281f.appspot.com",
-    messagingSenderId: "179464901093",
-    appId: "1:179464901093:web:afc3bf6823f2d6ae889f0c",
-    measurementId: "G-BDNE3B0STE",
+    apiKey: "AIzaSyAlnQ8wbCkNBZpQ5tXtNCzbK6VoGeUVa2Q",
+    authDomain: "learnen-c860c.firebaseapp.com",
+    projectId: "learnen-c860c",
+    storageBucket: "learnen-c860c.appspot.com",
+    messagingSenderId: "635172915121",
+    appId: "1:635172915121:web:bbe2c680f750aad5ad1f90",
+    measurementId: "G-85PH43X385"
   };
 
   firebase.initializeApp(firebaseConfig);
