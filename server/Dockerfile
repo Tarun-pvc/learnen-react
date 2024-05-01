@@ -2,7 +2,7 @@
 FROM node:20-alpine AS build
 
 # Install Redis
-RUN apt-get update && apt-get install -y redis-server
+RUN apk add --no-cache redis
 
 WORKDIR /app
 
@@ -19,7 +19,7 @@ COPY . .
 EXPOSE 3000
 
 # Start Redis
-CMD ["npm", "run", "redis"]
+CMD ["redis-server"]
 
 # Start the React development server (adjust command if needed)
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
