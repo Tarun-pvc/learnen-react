@@ -2,11 +2,16 @@
 .user-card {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 6px 20px;
     border: 1px solid #ddd;
-    border-radius: 100px;
+    border-radius: 12px;
     margin-left: 10px;
-    margin-right:10px;
+    margin-right:100px;
+    margin-bottom: 10px;
+    width:75%;
+  }
+  .user-delete{
+    height: 1.5rem;
   }
   
   .user-icon {
@@ -31,9 +36,9 @@
   }
   
   .mentor .user-card{
-    background-color: rgb(105, 148, 221);
+    background-color: #BED7DC;
   }
 
   .student .user-card{
-    background-color: #5fd465;
+    background-color: #DBE2EF;
   }

@@ -1,6 +1,34 @@
-const { mongoose } = require('mongoose');
+const { mongoose, set } = require('mongoose');
 const Room = require('../models/RoomModel');
 const User = require('../models/UserModel');
+const Report = require('../models/ReportModel');
+const redis = require("redis");
+
+let redisClient;
+
+(async () => {
+  redisClient = redis.createClient();
+
+  redisClient.on("error", (error) => console.error(`Error : ${error}`));
+
+  await redisClient.connect();
+})();
+
+const DEFAULT_EXPIRATION = 3600;
+
+const setCache = (key, value) => {
+    redisClient.setEx(key, DEFAULT_EXPIRATION, JSON.stringify(value));
+};
+
+const clearCache = (key) => {
+    redisClient.del(key);
+};
+
+// Function to clear and set cache
+const updateCache = async (key, value) => {
+    await clearCache(key);
+    setCache(key, value);
+};
 
 const adminRoomList = async (req, res , next) => {
     if (true) {
@@ -52,13 +80,14 @@ const buyCourse = async (req, res,next) => {
         
         await user.save();
         await room.save();
+        updateCache("courses", await Room.find()); // Clear and update cache
         res.status(200).json({ message: "Course added successfully" });
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not add course" });
         next(err);
     }
-}
+};
 
 const getCourses = async (req, res,next) => {
     const { userId } = req.session.user;
@@ -76,7 +105,7 @@ const getCourses = async (req, res,next) => {
         res.status(500).json({ error: "Could not fetch courses" });
         next(err);
     }
-}
+};
 const getCourse = async (req, res,next) => {
     const courseId = req.query.courseId;
     try {
@@ -91,22 +120,33 @@ const getCourse = async (req, res,next) => {
         res.status(500).json({ error: "Could not fetch courses" });
         next(err);
     }
-}
+};
 
 const getExploreCourses = async (req, res,next) => {
     try {
-        const courses = await Room.find();
-        res.status(200).json({ courses: courses });
+        const cachedCourses = await redisClient.get("courses");
+        if (cachedCourses) {
+            res.status(200).json({ courses: JSON.parse(cachedCourses) });
+            return;
+        } else {
+            const courses = await Room.find();
+            setCache("courses", courses);
+            res.status(200).json({ courses: courses });
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
         next(err);
     }
-}
+};
 
 const addRoom = async (req, res,next) => {
     const { roomTitle , price , meetLink , skills , description , userId } = req.body;
     try {
+        const cachedCreatedCourses = await redisClient.get("createdCourses");
+        if (cachedCreatedCourses) {
+            await redisClient.del("createdCourses");
+        }
         const user = await User.findById(userId);
         if (!user) {
             res.status(404).json({ error: "User not found" });
@@ -125,49 +165,104 @@ const addRoom = async (req, res,next) => {
         await room.save();
         user.Created_Room.push(room._id);
         await user.save();
+        updateCache("createdCourses", await Room.find({ _id: { $in: user.Created_Room } })); // Clear and update cache
         res.status(200).json({ message: "Room added successfully" });
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not add room" });
         next(err);
     }
-}   
+};   
 
 const getCreatedCourses = async (req, res,next) => {
     const  userId  = req.body.userId;
     try {
-        const user = await User.findById(userId);
+        const user = await User.findById(userId)
         if (!user) {
             res.status(404).json({ error: "User not found" });
             return;
         }
-        const userCourses = user.Created_Room;
-        const courses = await Room.find({ _id: { $in: userCourses } });
-        res.status(200).json({ courses: courses });
+        else{
+            const user = await User.findById(userId)
+            if (!user) {
+                res.status(404).json({ error: "User not found" });
+                return;
+            }
+            const userCourses = user.Created_Room;
+            const courses = await Room.find({ _id: { $in: userCourses } });
+            setCache("createdCourses", courses);
+            res.status(200).json({ courses: courses });
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
         next(err);
     }
-}
+};
 
 const getJoinedCourses = async (req, res,next) => {
     const  userId  = req.body.userId;
     try {
-        const user = await User.findById(userId);
+        const user = await User.findById(userId)
         if (!user) {
             res.status(404).json({ error: "User not found" });
             return;
         }
-        const userCourses = user.Joined_Room;
-        const courses = await Room.find({ _id: { $in: userCourses } });
-        res.status(200).json({ courses: courses });
+        else{
+            const user = await User.findById(userId)
+            if (!user) {
+                res.status(404).json({ error: "User not found" });
+                return;
+            }
+            const userCourses = user.Joined_Room;
+            const courses = await Room.find({ _id: { $in: userCourses } });
+            setCache("joinedCourses", courses);
+            res.status(200).json({ courses: courses });
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
         next(err);
     }
-}
+};
+
+const submitReports = async (req, res, next) => {
+    const { userId, userName, courseId, courseName, subject, message } = req.body;
+    try {
+      const report = new Report({
+        title: subject,
+        description: message,
+        userName: userName,
+        userId: userId,
+        courseId: courseId,
+        courseName: courseName,
+      });
+      await report.save();
+      const room = await Room.findById(courseId);
+      if (!room) {
+        res.status(404).json({ error: "Room not found" });
+        return;
+      }
+      room.reports.push(report._id);
+      await room.save();
+      res.status(200).json({ message: "Report submitted successfully" });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: "Could not submit report" });
+      next(err);
+    }
+};
+  
+const getReports = async (req, res, next) => {
+    try {
+      const reports = await Report.find();
+      res.status(200).json({ reports:reports });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: "Could not submit report" });
+      next(err);
+    }
+};
 
 module.exports = {
     adminRoomList,
@@ -177,5 +272,7 @@ module.exports = {
     addRoom,
     getCreatedCourses,
     getCourse,
-    getJoinedCourses
+    getJoinedCourses,
+    submitReports,
+    getReports
 };

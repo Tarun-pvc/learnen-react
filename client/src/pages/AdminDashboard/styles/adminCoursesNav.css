@@ -87,8 +87,8 @@
     width: 70vw;
     margin: 0 auto;
     gap: 3rem;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
+    /* scroll-behavior: smooth; */
+    /* overflow-y: scroll; */
     padding-left: 0.5rem;
     padding-bottom: 1rem;
 }

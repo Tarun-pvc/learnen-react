@@ -19,6 +19,8 @@ export default function CourseRoomMain() {
   const user = JSON.parse(localStorage.getItem("loginUser"));
   const staticRating = 3;
   const [selectedItem, setSelectedItem] = useState("Assignments");
+  const [reportSubject, setReportSubject] = useState("");
+  const [reportMessage, setReportMessage] = useState("");
 
   const location = useLocation();
   const courseId = JSON.parse(localStorage.getItem("selectedCourseId"));
@@ -39,6 +41,29 @@ export default function CourseRoomMain() {
     fetchCourses();
   }, []);
 
+  const handleReportSubmit = (event) => {
+    event.preventDefault();
+    const reportData = {
+      userId: user._id,
+      userName: user.userName,
+      courseId: courseId,
+      courseName: course1 ? course1.title : "",
+      subject: reportSubject,
+      message: reportMessage,
+    };
+    // console.log(reportData);
+
+    fetch("http://localhost:3000/api/submitReports", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reportData),
+    });
+    setReportSubject("");
+    setReportMessage("");
+  };
+
   const renderSelectedComponent = () => {
     switch (selectedItem) {
       case "Assignments":
@@ -48,7 +73,7 @@ export default function CourseRoomMain() {
       case "Schedules":
         return <CourseRoomSchedules />;
       case "Participants":
-        return <CourseRoomParticipants course={course1}/>;
+        return <CourseRoomParticipants course={course1} />;
       default:
         return <CourseRoomAssignments />;
     }
@@ -122,9 +147,11 @@ export default function CourseRoomMain() {
                 Mentor: {user.userName}
               </p>
               <p className="cr-main-top-content-skills">
-                Skills: {course1? course1.skills : ""}
+                Skills: {course1 ? course1.skills : ""}
               </p>
-              <p className="cr-main-top-content-duration">Price :{course1? course1.price : ""}</p>
+              <p className="cr-main-top-content-duration">
+                Price :{course1 ? course1.price : ""}
+              </p>
               <RatingComponent
                 className="cr-main-top-rating"
                 staticRating={5 - staticRating}
@@ -147,16 +174,26 @@ export default function CourseRoomMain() {
             {renderSelectedComponent()}
           </div>
           <div className="cr-mail-component">
-            <p>Send Message</p>
+            <p>Report</p>
             <hr />
-            <form>
+            <form onSubmit={handleReportSubmit}>
               <div className="cr-mail-subject-input">
                 <label>Subject:</label>
-                <input type="text" placeholder="Enter subject" />
+                <input
+                  type="text"
+                  placeholder="Enter subject"
+                  value={reportSubject}
+                  onChange={(e) => setReportSubject(e.target.value)}
+                />
               </div>
               <div className="cr-mail-subject-input-text-area">
                 <label>Message:</label>
-                <textarea type="text" placeholder="Enter your message" />
+                <textarea
+                  type="text"
+                  placeholder="Enter your message"
+                  value={reportMessage}
+                  onChange={(e) => setReportMessage(e.target.value)}
+                />
               </div>
               <button type="submit">Send</button>
             </form>
