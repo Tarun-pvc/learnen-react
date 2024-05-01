@@ -1,16 +1,14 @@
-# version: '3.8'
+version: '3.8'
 
 services:
   node-app:
     build: .
     image: node-app
-    # environment:
     ports:
       - '4000:4000'
     depends_on:
       - mongodb
-    #volumes:
-    #  - .:/usr/src/app
+      - redis
     networks:
       - node-network
 
@@ -23,9 +21,15 @@ services:
     networks:
       - node-network
 
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    networks:
+      - node-network
+
 volumes:
-  - node_modules
-  - dbdata6:
+  dbdata6:
 
 networks:
   node-network:
