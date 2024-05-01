@@ -1,7 +1,7 @@
 // import React from 'react'
 
 import { useState } from "react";
-import AdminSidebar from "./components/AdminSidebar";
+import AdminSidebar from "./components/adminSidebar";
 import './styles/adminDashboardMain.css'
 import AdminCoursesNav from "./components/adminCoursesNav";
 import AdminReports from "./components/adminReports";
