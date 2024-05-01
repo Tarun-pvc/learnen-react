@@ -5,9 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "redis": "redis-server /usr/local/etc/redis.conf",
-    "test": "npm run redis-install && npm run redis && jest --reporters=default --reporters=jest-html-reporter",
-    "redis-install": "apt-get update && apt-get install -y redis-server"
+    "test": "npm run wait-for-redis && jest --reporters=default --reporters=jest-html-reporter",
+    "wait-for-redis": "wait-on tcp:localhost:6379"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
