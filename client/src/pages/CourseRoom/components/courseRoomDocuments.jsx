@@ -1,7 +1,7 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import { useSelector } from "react-redux";
-import "../styles/CourseRoomAssignments.css";
+import "../styles/courseRoomAssignments.css";
 
 export default function CourseRoomDocuments() {
   const user = JSON.parse(localStorage.getItem("loginUser"));
