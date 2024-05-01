@@ -8,7 +8,6 @@ const Assignment = require('../models/AssignmentModel');
 const Resource = require('../models/ResourceModel');
 const Schedule = require('../models/ScheduleModel');
 const Routes = require('../routes/Route')
-const clearCache = require('../controllers/roomController')
 
 const app = express();
 beforeAll(async () => {
@@ -109,7 +108,6 @@ describe('Room Routes', () => {
     });
   
     await testRoom.save();
-    await clearCache("courses");
   });
   
 
