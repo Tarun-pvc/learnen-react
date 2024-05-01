@@ -1,88 +1,59 @@
-// import React from 'react'
-import {useState} from 'react'
-import '../styles/adminUsers.css'
-import AdminUsersCard from './adminUsersCard'
+import React, { useState, useEffect } from "react";
+import "../styles/adminUsers.css";
+import AdminUsersCard from "./adminUsersCard";
 
 export default function AdminUsers() {
-  const [sortType,setSortType] = useState("default")
-  const [userType, setUserType] = useState("Mentor")
+  const [sortType, setSortType] = useState("default");
+  const [userType, setUserType] = useState("Mentor");
+  const [users, setUsers] = useState([]);
+  const [mentors, setMentors] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  function handleClick(item){
+  useEffect(() => {
+    fetch("http://localhost:3000/api/getUsers")
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data);
+        const mentorList = data.filter((item) => item.Position === "mentor");
+        const studentList = data.filter((item) => item.Position === "student");
+        setMentors(mentorList);
+        setStudents(studentList);
+      });
+  }, []);
+
+  useEffect(() => {
+    const filteredMentors = mentors.filter((mentor) =>
+      mentor.userName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    const filteredStudents = students.filter((student) =>
+      student.userName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setMentors(filteredMentors);
+    setStudents(filteredStudents);
+  }, [searchQuery]);
+
+  function handleClick(item) {
     setUserType(item);
   }
 
-  const Mentors = [
-    {
-      role: 'mentor',
-      name: 'smith'
-    },
-    {
-      role: 'mentor',
-      name: 'Shekh'
-    },
-    {
-      role: 'mentor',
-      name: 'Paul'
-    },
-    {
-      role: 'mentor',
-      name: 'Lilith'
-    },
-    {
-      role: 'mentor',
-      name: 'Jasmin'
-    },
-    {
-      role: 'mentor',
-      name: 'Kartein'
-    },
-  ]
-
-  const Students = [
-    {
-      role: 'student',
-      name: 'Nithin'
-    },
-    {
-      role: 'student',
-      name: 'Jathin'
-    },
-    {
-      role: 'student',
-      name: 'Kamal'
-    },
-    {
-      role: 'student',
-      name: 'Nikhil'
-    },
-    {
-      role: 'student',
-      name: 'Kapil'
-    },
-    {
-      role: 'student',
-      name: 'Deepak'
-    }
-  ]
-
-  let itemElements;
-
-  if (userType === 'mentor'){
-    itemElements = Mentors.map((item, index) => (
-      <AdminUsersCard user = {item}/>
-    ));
-  }
-  else{
-    itemElements = Students.map((item, index) => (
-      <AdminUsersCard user = {item}/>
-    ));
-  }
+  const itemElements = userType === "Mentor" ? mentors : students;
 
   return (
     <div className="admin-users-nav-wrapper">
       <div className="users-nav-navbar">
-        <h2 onClick={()=>handleClick('mentor')} className={userType==='mentor' ? 'active-role' : ''}>Mentors</h2>
-        <h2 onClick = {()=>handleClick('student')} className = {userType==='student' ? 'active-role':''}>Students</h2>
+        <h2
+          onClick={() => handleClick("Mentor")}
+          className={userType === "Mentor" ? "active-role" : ""}
+        >
+          Mentors
+        </h2>
+        <h2
+          onClick={() => handleClick("Student")}
+          className={userType === "Student" ? "active-role" : ""}
+        >
+          Students
+        </h2>
       </div>
       <div className="admin-users-main-wrapper">
         <div className="admin-users-search-wrapper">
@@ -92,27 +63,16 @@ export default function AdminUsers() {
             className="admin-users-search-input"
             name="text"
             type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <div className="admin-users-sort-wrapper">
-          <h2>Sort By:</h2>
-          <div className="admin-users-sort-list">
-            <h2>Relevance</h2>
-            <h2>Reports</h2>
-            <h2>Room Count</h2>
-          </div>
+        <div className="admin-users-list12">
+          {itemElements.map((item, index) => (
+            <AdminUsersCard key={index} user={item} />
+          ))}
         </div>
-
-        {itemElements}
-        
-        
       </div>
-
-      {/* <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      /> */}
     </div>
   );
 }

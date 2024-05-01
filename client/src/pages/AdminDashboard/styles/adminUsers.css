@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
 }
+.admin-users-list12{
+    padding-left: 13vw;
+}
 
 .users-nav-navbar {
     display: flex;

@@ -8,6 +8,7 @@ import star from "../assets/star.png";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from "react-router-dom"; 
 
 export default function CourseCard() {
   const [buying, setBuying] = useState(false);
@@ -16,6 +17,7 @@ export default function CourseCard() {
 
   console.log("coursecheckout", room.cardData);
   console.log("user", user);
+  const navigate = useNavigate();
 
   const handleBuyCourse = async () => {
     try {
@@ -39,9 +41,11 @@ export default function CourseCard() {
       console.log("Trying to initiate payment...");
       const orderUrl = "http://localhost:3000/api/payment/orders";
       const { data } = await axios.post(orderUrl, { amount: room.cardData.price});
-      console.log("Received order data:", data);
+      console.log("Initiating payment...");
       initPayment(data.data);
+      console.log("Payment initiated...");
       handleBuyCourse();
+      console.log("Course bought successfully!");
 
     } catch (error) {
       console.error("Error in handlePayment:", error);
@@ -50,7 +54,7 @@ export default function CourseCard() {
 
   const initPayment = (data) => {
     const options = {
-      key: "rzp_test_shdYSDylDwL8ev",
+      key: "rzp_test_hcluKtADsGp5AS",
       amount: data.amount,
       currency: data.currency,
       description: "Test Transaction",
@@ -60,6 +64,10 @@ export default function CourseCard() {
           const verifyUrl = "http://localhost:3000/api/payment/verify";
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
+          toast.success("Payment successful!");
+          setTimeout(() => {
+            navigate("/studentDashboard")
+          }, 3000);
           
         } catch (error) {
           console.log(error);

@@ -69,7 +69,7 @@ export default function SdSideBar({ onMenuItemClick }) {
           <div className="sd-sidebar-generalSub-icon1-div">
             <img src={update} className="sd-sidebar-generalSub-icon1" />
           </div>
-          <p className="sd-sidebar-generalSub-Name ">
+          <p className="sd-sidebar-generalSub-Name sd-sidebar-selector">
             Update Profile
           </p>
         </div>

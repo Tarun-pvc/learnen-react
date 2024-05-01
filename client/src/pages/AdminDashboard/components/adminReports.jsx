@@ -1,59 +1,49 @@
-// GmailClone.jsx
-import React from 'react';
-import '../styles/adminReports.css';
-import {faSkullCrossbones} from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from "react";
+import "../styles/adminReports.css";
+import { faSkullCrossbones } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ReportComponent = (props) =>{
-  
+const ReportComponent = (props) => {
   return (
     <div className="report">
-      <span className="sender">{props.report.reporter}</span>
-      <span className="subject">{props.report.subject}</span>
-      <p className="preview">{props.report.content}</p>
+      <span className="sender">{props.report.userName}:</span>
+      <span className="subject">{props.report.title}</span>
+      <p className="preview">{props.report.description}</p>
     </div>
-  )
-}
+  );
+};
 
 const AdminReports = () => {
+  const [reports, setReports] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
+  useEffect(() => {
+    fetch("http://localhost:3000/api/Reports")
+      .then((res) => res.json())
+      .then((data) => {
+        setReports(data.reports);
+      });
+  }, []);
 
-  const mails = [
-    {
-      reporter: 'Samuel',
-      subject: 'Not working!',
-      content: 'I have a bug...'
-    },
-    {
-      reporter: 'Crum',
-      subject: 'Gmeet issue',
-      content: 'Not working'
-    },
-    {
-      reporter: 'Emojis',
-      subject: 'Why are emojis not working??',
-      content: 'Funny emojis... not working....'
-    },
-    {
-      reporter: 'Fire_Kaiser',
-      subject: 'What is this... didnt expect',
-      content: 'Diddnt explect. .. '
-    },
-    {
-      reporter: 'Jolie',
-      subject: 'Why this feature no?',
-      content: 'no feature no like'
-    }
-  ]
-  
+  // Filter reports based on search query
+  const filteredReports = reports.filter((report) =>
+    report.userName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="admin-reports-wrapper">
       <header className="reports-header">
-        <FontAwesomeIcon className='reports-icon' icon={faSkullCrossbones} />
-          <input className='search-bar' type="text" placeholder="Search Reports" />
+        <FontAwesomeIcon className="reports-icon" icon={faSkullCrossbones} />
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Search Reports by Username"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </header>
       <main className="reports">
-      {mails.map((item, index) => (
+        {filteredReports.map((item, index) => (
           <ReportComponent key={index} report={item} />
         ))}
       </main>

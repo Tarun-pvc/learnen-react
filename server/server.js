@@ -82,6 +82,35 @@ app.get('/api/getCSRFToken',csrfProtection, (req, res) => {
 
 app.use('/api/payment', paymentRoutes);
 
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerui = require('swagger-ui-express');
+const swaggerOptions = {
+  definition: {
+      openapi: '3.0.0',
+      info: {
+          title: 'API Documentation for Learnen',
+          version: '1.0.0',
+          description: 'Learnen API Documentation',
+          contact: {
+              name: 'Learnen',
+              email: 'admin@learnin.in'
+          },
+      },
+      servers: [
+          { 
+              url: 'https://learnen-react.onrender.com/api/',
+              description: 'Development Server'
+          }
+      ]
+  },
+  apis: ['./routes/Route.js', './controllers/*.js']
+}
+// Swagger
+
+const specs = swaggerJsDoc(swaggerOptions);
+
+app.use('/api-docs', swaggerui.serve, swaggerui.setup(specs));
+
 
 app.listen(3000, () => {
   console.log('server running at port 3000');
