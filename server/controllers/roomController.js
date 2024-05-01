@@ -1,6 +1,24 @@
-const { mongoose } = require('mongoose');
+const { mongoose, set } = require('mongoose');
 const Room = require('../models/RoomModel');
 const User = require('../models/UserModel');
+const redis = require("redis");
+
+let redisClient;
+
+(async () => {
+  redisClient = redis.createClient();
+
+  redisClient.on("error", (error) => console.error(`Error : ${error}`));
+
+  await redisClient.connect();
+})();
+
+const DEFAULT_EXPIRATION = 3600
+
+const setCache = (key, value) => {
+    redisClient.setEx(key, DEFAULT_EXPIRATION, JSON.stringify(value));
+  }
+  
 
 const adminRoomList = async (req, res , next) => {
     if (true) {
@@ -95,8 +113,16 @@ const getCourse = async (req, res,next) => {
 
 const getExploreCourses = async (req, res,next) => {
     try {
-        const courses = await Room.find();
-        res.status(200).json({ courses: courses });
+        const cachedCourses = await redisClient.get("courses");
+        if (cachedCourses) {
+            res.status(200).json({ courses: JSON.parse(cachedCourses) });
+            return;
+        }
+        else{
+            const courses = await Room.find();
+            setCache("courses", courses);
+            res.status(200).json({ courses: courses });
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
@@ -107,6 +133,10 @@ const getExploreCourses = async (req, res,next) => {
 const addRoom = async (req, res,next) => {
     const { roomTitle , price , meetLink , skills , description , userId } = req.body;
     try {
+        const cachedCreatedCourses = await redisClient.get("createdCourses");
+        if (cachedCreatedCourses) {
+            await redisClient.del("createdCourses");
+        }
         const user = await User.findById(userId);
         if (!user) {
             res.status(404).json({ error: "User not found" });
@@ -125,6 +155,7 @@ const addRoom = async (req, res,next) => {
         await room.save();
         user.Created_Room.push(room._id);
         await user.save();
+        setCache("createdCourses", user.Created_Room);
         res.status(200).json({ message: "Room added successfully" });
     } catch (err) {
         console.log(err);
@@ -136,14 +167,22 @@ const addRoom = async (req, res,next) => {
 const getCreatedCourses = async (req, res,next) => {
     const  userId  = req.body.userId;
     try {
-        const user = await User.findById(userId);
-        if (!user) {
-            res.status(404).json({ error: "User not found" });
+        const cachedCreatedCourses = await redisClient.get("createdCourses");
+        if (cachedCreatedCourses) {
+            res.status(200).json({ courses: JSON.parse(cachedCreatedCourses) });
             return;
         }
-        const userCourses = user.Created_Room;
-        const courses = await Room.find({ _id: { $in: userCourses } });
-        res.status(200).json({ courses: courses });
+        else{
+            const user = await User.findById(userId)
+            if (!user) {
+                res.status(404).json({ error: "User not found" });
+                return;
+            }
+            const userCourses = user.Created_Room;
+            const courses = await Room.find({ _id: { $in: userCourses } });
+            setCache("createdCourses", courses);
+            res.status(200).json({ courses: courses });
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
@@ -154,14 +193,22 @@ const getCreatedCourses = async (req, res,next) => {
 const getJoinedCourses = async (req, res,next) => {
     const  userId  = req.body.userId;
     try {
-        const user = await User.findById(userId);
-        if (!user) {
-            res.status(404).json({ error: "User not found" });
+        const cachedJoinedCourses = await redisClient.get("joinedCourses");
+        if (cachedJoinedCourses) {
+            res.status(200).json({ courses: JSON.parse(cachedJoinedCourses) });
             return;
         }
-        const userCourses = user.Joined_Room;
-        const courses = await Room.find({ _id: { $in: userCourses } });
-        res.status(200).json({ courses: courses });
+        else{
+            const user = await User.findById(userId)
+            if (!user) {
+                res.status(404).json({ error: "User not found" });
+                return;
+            }
+            const userCourses = user.Joined_Room;
+            const courses = await Room.find({ _id: { $in: userCourses } });
+            setCache("joinedCourses", courses);
+            res.status(200).json({ courses: courses });
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
