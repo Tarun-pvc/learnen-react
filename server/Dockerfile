@@ -15,5 +15,8 @@ COPY . .
 # mUST BE THE SAME AS BACKEND
 EXPOSE 3000
 
+# Start Redis
+CMD ["redis-server", "/usr/local/etc/redis.conf"]
+
 # Start the React development server (adjust command if needed)
 CMD [ "node", "server.js" ]
