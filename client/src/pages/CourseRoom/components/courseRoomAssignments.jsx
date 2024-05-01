@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/CourseRoomAssignments.css";
+import "../styles/courseRoomAssignments.css";
 import { useSelector } from "react-redux";
 
 export default function CourseRoomAssignments() {
