@@ -7,10 +7,12 @@ import { useNavigate } from "react-router-dom";
 function JoinedCourseCard(props) {
   const staticRating = 3;
   const navigate = useNavigate();
+  
 
   return (
     <>
       <div className="CourseCard-wrapper" onClick={()=>{
+        localStorage.setItem("selectedCourseId", JSON.stringify(props.courseId));
         navigate('/courseRoom')
       }}>
 

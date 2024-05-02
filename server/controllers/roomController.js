@@ -121,7 +121,8 @@ const getCourse = async (req, res,next) => {
             res.status(404).json({ error: "Course not found" });
             return;
         }
-        res.status(200).json({ course: room });
+        const mentor = await User.findById(room.mentor.user);
+        res.status(200).json({ course: room , mentor: mentor });
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Could not fetch courses" });
