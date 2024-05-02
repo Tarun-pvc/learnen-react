@@ -8,6 +8,7 @@ const Assignment = require('../models/AssignmentModel');
 const Resource = require('../models/ResourceModel');
 const Schedule = require('../models/ScheduleModel');
 const Routes = require('../routes/Route')
+const {redisClient} = require('../controllers/roomController')
 
 const app = express();
 beforeAll(async () => {
@@ -456,4 +457,6 @@ afterAll(async () => {
   await User.deleteMany({});
   await Room.deleteMany({});
   await mongoose.connection.close();
+  redisClient.FLUSHALL()
+  redisClient.quit();
 }); 
