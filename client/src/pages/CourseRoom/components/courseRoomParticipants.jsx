@@ -6,7 +6,7 @@ export default function CourseRoomParticipants(props) {
   const [participants, setParticipants] = useState([]);
   const courseId = JSON.parse(localStorage.getItem("selectedCourseId"));
   useEffect(()=>{
-    fetch("http://localhost:3000/api/getParticipants",
+    fetch("https://learnen-react.onrender.com/api/getParticipants",
     {
       method: "POST",
       headers: {

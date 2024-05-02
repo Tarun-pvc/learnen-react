@@ -9,7 +9,7 @@ function MentorCourses() {
 
   const getCreatedCourses = async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/getcreatedcourses/', {
+        const response = await fetch('https://learnen-react.onrender.com/api/getcreatedcourses/', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',

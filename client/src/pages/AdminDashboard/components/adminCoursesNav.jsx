@@ -9,7 +9,7 @@ export default function AdminCoursesNav() {
 
   useEffect(() => {
     try {
-      fetch("http://localhost:3000/api/explorecourses")
+      fetch("https://learnen-react.onrender.com/api/explorecourses")
         .then((res) => res.json())
         .then((data) => {
           setRoomData(data.courses);

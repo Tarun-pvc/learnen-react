@@ -30,7 +30,7 @@ function CreateRoom() {
   const handleSubmit = () => {
     //Add data to mongodb using fetch
     console.log(formData);
-    fetch("http://localhost:3000/api/addRoom", {
+    fetch("https://learnen-react.onrender.com/api/addRoom", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

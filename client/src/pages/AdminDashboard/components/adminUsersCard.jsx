@@ -14,7 +14,7 @@ const AdminUsersCard = (props) => {
 
   function delteUser() {
     // console.log(props.user._id);
-    fetch("http://localhost:3000/api/deleteUser", {
+    fetch("https://learnen-react.onrender.com/api/deleteUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

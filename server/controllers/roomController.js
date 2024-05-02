@@ -150,9 +150,10 @@ const getExploreCourses = async (req, res,next) => {
 const addRoom = async (req, res,next) => {
     const { roomTitle , price , meetLink , skills , description , userId } = req.body;
     try {
-        const cachedCreatedCourses = await redisClient.get("createdCourses");
+        const cachedCreatedCourses = await redisClient.get("courses");
         if (cachedCreatedCourses) {
             await redisClient.del("createdCourses");
+            await redisClient.del("courses");
         }
         const user = await User.findById(userId);
         if (!user) {
@@ -172,7 +173,8 @@ const addRoom = async (req, res,next) => {
         await room.save();
         user.Created_Room.push(room._id);
         await user.save();
-        updateCache("createdCourses", await Room.find({ _id: { $in: user.Created_Room } })); // Clear and update cache
+        updateCache("createdCourses", await Room.find({ _id: { $in: user.Created_Room } })); 
+        updateCache("courses", await Room.find());
         res.status(200).json({ message: "Room added successfully" });
     } catch (err) {
         console.log(err);

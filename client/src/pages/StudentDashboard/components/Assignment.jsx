@@ -13,7 +13,7 @@ export default function Assignments() {
 
   const fetchAssignments = () => {
   const user = JSON.parse(localStorage.getItem("loginUser"));
-    fetch("http://localhost:3000/api/getAssignmentsJoined",{
+    fetch("https://learnen-react.onrender.com/api/getAssignmentsJoined",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",

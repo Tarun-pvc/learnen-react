@@ -67,7 +67,7 @@ function VerificationPage() {
     const securityquestion = userData.securityquestion;
     const securityanswer = userData.securityanswer  ;
     try {
-      await axios.post("http://localhost:3000/api/signup", {
+      await axios.post("https://learnen-react.onrender.com/api/signup", {
           signupname,
           signupemail,
           signuppass,

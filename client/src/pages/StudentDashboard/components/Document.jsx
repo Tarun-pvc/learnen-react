@@ -8,7 +8,7 @@ export default function Document() {
   const user = JSON.parse(localStorage.getItem("loginUser"));
   useEffect(() => {
     if (user) {
-      fetch("http://localhost:3000/api/getresourcesJoined", {
+      fetch("https://learnen-react.onrender.com/api/getresourcesJoined", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

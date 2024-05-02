@@ -16,7 +16,7 @@ function SdRightBar() {
   console.log(user)
 
   const handleLogout = () => {
-    axios.get("http://localhost:3000/api/logout").then((res) => {
+    axios.get("https://learnen-react.onrender.com/api/logout").then((res) => {
       console.log(res);
       window.location.href = "/";
     });

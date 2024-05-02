@@ -21,7 +21,7 @@ export default function CourseRoomSchedules() {
     const course = {
       courseId,
     };
-    fetch("http://localhost:3000/api/getSchedulesByCourse", {
+    fetch("https://learnen-react.onrender.com/api/getSchedulesByCourse", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export default function CourseRoomSchedules() {
       link,
       courseId,
     };
-    fetch("http://localhost:3000/api/addschedule", {
+    fetch("https://learnen-react.onrender.com/api/addschedule", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
