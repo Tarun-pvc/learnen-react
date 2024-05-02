@@ -22,7 +22,7 @@ function UpdateMP() {
     async function fetchData() {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/getupdateuser?userId=${user._id}`
+          `https://learnen-react.onrender.com/api/getupdateuser?userId=${user._id}`
         );
         console.log(response.data);
         setUserData(response.data);
@@ -40,7 +40,7 @@ function UpdateMP() {
   async function handleSubmit() {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/updateuser",
+        "https://learnen-react.onrender.com/api/updateuser",
         userData,
         {
           headers: {

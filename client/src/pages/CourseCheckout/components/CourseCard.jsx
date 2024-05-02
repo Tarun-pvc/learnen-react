@@ -22,7 +22,7 @@ export default function CourseCard() {
   const handleBuyCourse = async () => {
     try {
       await axios
-        .post("http://localhost:3000/api/buycourse", {
+        .post("https://learnen-react.onrender.com/api/buycourse", {
           roomId: room.cardData._id,
           userId: user._id,
         })
@@ -39,7 +39,7 @@ export default function CourseCard() {
   const handlePayment = async () => {
     try {
       console.log("Trying to initiate payment...");
-      const orderUrl = "http://localhost:3000/api/payment/orders";
+      const orderUrl = "https://learnen-react.onrender.com/api/payment/orders";
       const { data } = await axios.post(orderUrl, { amount: room.cardData.price});
       console.log("Initiating payment...");
       initPayment(data.data);
@@ -61,7 +61,7 @@ export default function CourseCard() {
       order_id: data.id,
       handler: async (response) => {
         try {
-          const verifyUrl = "http://localhost:3000/api/payment/verify";
+          const verifyUrl = "https://learnen-react.onrender.com/api/payment/verify";
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
           toast.success("Payment successful!");

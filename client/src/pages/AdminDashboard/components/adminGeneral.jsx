@@ -31,7 +31,7 @@ function AdminGeneral() {
   const [reports1, setReports] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/getUsers")
+    fetch("https://learnen-react.onrender.com/api/getUsers")
       .then((res) => res.json())
       .then((data) => {
         const mentorList = data.filter((item) => item.Position === "mentor");
@@ -39,13 +39,13 @@ function AdminGeneral() {
         setMentors(mentorList);
         setStudents(studentList);
       });
-    fetch("http://localhost:3000/api/Reports")
+    fetch("https://learnen-react.onrender.com/api/Reports")
       .then((res) => res.json())
       .then((data) => {
         setReports(data.reports);
         console.log(data.reports);
       });
-    fetch("http://localhost:3000/api/explorecourses")
+    fetch("https://learnen-react.onrender.com/api/explorecourses")
       .then((res) => res.json())
       .then((data) => {
         console.log(data.courses);

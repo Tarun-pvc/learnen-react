@@ -18,7 +18,7 @@ const AdminReports = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/Reports")
+    fetch("https://learnen-react.onrender.com/api/Reports")
       .then((res) => res.json())
       .then((data) => {
         setReports(data.reports);

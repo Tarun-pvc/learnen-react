@@ -9,7 +9,7 @@ export default function Joined() {
 
   const getCreatedCourses = async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/getjoinedcourses/', {
+        const response = await fetch('https://learnen-react.onrender.com/api/getjoinedcourses/', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',

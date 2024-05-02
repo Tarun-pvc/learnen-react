@@ -8,7 +8,7 @@ import axios from "axios";
 
 export default function Explore() {
   const [explorecourses,setExplorecourses] = useState([]);
-  fetch("http://localhost:3000/api/explorecourses")
+  fetch("https://learnen-react.onrender.com/api/explorecourses")
   .then((res)=>res.json())
   .then((data)=>{
     setExplorecourses(data.courses)

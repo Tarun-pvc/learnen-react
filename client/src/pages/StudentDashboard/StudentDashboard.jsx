@@ -36,7 +36,7 @@ export default function StudentDashboard() {
     }
   };
 
-  fetch("http://localhost:3000/api/dashboard", {
+  fetch("https://learnen-react.onrender.com/api/dashboard", {
     method: "GET",
     headers: {
       "Content-Type": "application/json"

@@ -22,7 +22,7 @@ export default function CourseRoomDocuments() {
     const course = {
       courseId,
     };
-    fetch("http://localhost:3000/api/getresources", {
+    fetch("https://learnen-react.onrender.com/api/getresources", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ export default function CourseRoomDocuments() {
       courseId,
     };
     console.log("frontend",document);
-    fetch("http://localhost:3000/api/addresource", {
+    fetch("https://learnen-react.onrender.com/api/addresource", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -20,7 +20,7 @@ export default function SdMiddle() {
   const user = JSON.parse(localStorage.getItem("loginUser"));
 
   const fetchAssignments = () => {
-    fetch("http://localhost:3000/api/getAssignmentsJoined", {
+    fetch("https://learnen-react.onrender.com/api/getAssignmentsJoined", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export default function SdMiddle() {
 
   useEffect(() => {
     if (user) {
-      fetch("http://localhost:3000/api/getSchedule", {
+      fetch("https://learnen-react.onrender.com/api/getSchedule", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -20,7 +20,7 @@ function MdMiddle() {
   const [total,setTotal]=useState(0);
   useEffect(() => {
     if (user) {
-      fetch("http://localhost:3000/api/getSchedule", {
+      fetch("https://learnen-react.onrender.com/api/getSchedule", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -30,7 +30,7 @@ export default function CourseRoomMain() {
     async function fetchCourses() {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/getCourse?courseId=${courseId}`
+          `https://learnen-react.onrender.com/api/getCourse?courseId=${courseId}`
         );
         setCourse(response.data.course);
       } catch {
@@ -53,7 +53,7 @@ export default function CourseRoomMain() {
     };
     // console.log(reportData);
 
-    fetch("http://localhost:3000/api/submitReports", {
+    fetch("https://learnen-react.onrender.com/api/submitReports", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

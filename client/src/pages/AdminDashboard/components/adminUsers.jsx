@@ -11,7 +11,7 @@ export default function AdminUsers() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/getUsers")
+    fetch("https://learnen-react.onrender.com/api/getUsers")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);

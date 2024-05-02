@@ -16,7 +16,7 @@ export default function AdminCourseCard(props) {
   const [mentor,setMentor]=useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/getUserName", {
+    fetch("https://learnen-react.onrender.com/api/getUserName", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export default function AdminCourseCard(props) {
 
   function delteCourse() {
     console.log(props.cardData._id);
-    fetch("http://localhost:3000/api/deleteCourse", {
+    fetch("https://learnen-react.onrender.com/api/deleteCourse", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
