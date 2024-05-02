@@ -3,12 +3,18 @@ const Room = require('../models/RoomModel');
 const User = require('../models/UserModel');
 const Report = require('../models/ReportModel');
 const redis = require("redis");
+const {createClient} = require('redis');
 
-let redisClient;
 
+const redisClient = createClient({
+    password: 'lkpFKwAQQEMUQDCP2aJt5UDoqBl9euRA',
+    socket: {
+        host: 'redis-13346.c9.us-east-1-4.ec2.redns.redis-cloud.com',
+        port: 13346
+    }
+});
 
 (async () => {
-  redisClient = redis.createClient();
 
   redisClient.on("error", (error) => console.error(`Error : ${error}`));
 
