@@ -281,5 +281,6 @@ module.exports = {
     getCourse,
     getJoinedCourses,
     submitReports,
-    getReports
+    getReports,
+    redisClient
 };
