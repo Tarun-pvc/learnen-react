@@ -25,6 +25,7 @@ export default function CourseRoomMain() {
   const location = useLocation();
   const courseId = JSON.parse(localStorage.getItem("selectedCourseId"));
   const userid = JSON.parse(localStorage.getItem("loginUser"));
+  const [mentor, setMentor] = useState();
 
   useEffect(() => {
     async function fetchCourses() {
@@ -33,6 +34,7 @@ export default function CourseRoomMain() {
           `https://learnen-react.onrender.com/api/getCourse?courseId=${courseId}`
         );
         setCourse(response.data.course);
+        setMentor(response.data.mentor);
       } catch {
         console.error("Error fetching data");
       }
@@ -73,7 +75,7 @@ export default function CourseRoomMain() {
       case "Schedules":
         return <CourseRoomSchedules />;
       case "Participants":
-        return <CourseRoomParticipants course={course1} />;
+        return <CourseRoomParticipants course={course1}/>;
       default:
         return <CourseRoomAssignments />;
     }
@@ -144,7 +146,7 @@ export default function CourseRoomMain() {
                 {course1 ? course1.title : ""}
               </p>
               <p className="cr-main-top-content-mentor">
-                Mentor: {user.userName}
+                Mentor: {mentor.userName}
               </p>
               <p className="cr-main-top-content-skills">
                 Skills: {course1 ? course1.skills : ""}
